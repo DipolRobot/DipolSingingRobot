@@ -1,0 +1,3010 @@
+
+RamieRobota_Lewa.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000db6  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000050  00800060  00000db6  00000e2a  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .stab         000006cc  00000000  00000000  00000e7c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  3 .stabstr      00000085  00000000  00000000  00001548  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  4 .debug_aranges 00000080  00000000  00000000  000015d0  2**3
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00002c92  00000000  00000000  00001650  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 000002da  00000000  00000000  000042e2  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   00000e83  00000000  00000000  000045bc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  000002b8  00000000  00000000  00005440  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    00000323  00000000  00000000  000056f8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    00000c1f  00000000  00000000  00005a1b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000178  00000000  00000000  0000663a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	12 c0       	rjmp	.+36     	; 0x26 <__ctors_end>
+   2:	35 c3       	rjmp	.+1642   	; 0x66e <__vector_1>
+   4:	2c c0       	rjmp	.+88     	; 0x5e <__vector_2>
+   6:	2a c0       	rjmp	.+84     	; 0x5c <__bad_interrupt>
+   8:	29 c0       	rjmp	.+82     	; 0x5c <__bad_interrupt>
+   a:	28 c0       	rjmp	.+80     	; 0x5c <__bad_interrupt>
+   c:	27 c0       	rjmp	.+78     	; 0x5c <__bad_interrupt>
+   e:	26 c0       	rjmp	.+76     	; 0x5c <__bad_interrupt>
+  10:	25 c0       	rjmp	.+74     	; 0x5c <__bad_interrupt>
+  12:	24 c0       	rjmp	.+72     	; 0x5c <__bad_interrupt>
+  14:	23 c0       	rjmp	.+70     	; 0x5c <__bad_interrupt>
+  16:	22 c0       	rjmp	.+68     	; 0x5c <__bad_interrupt>
+  18:	21 c0       	rjmp	.+66     	; 0x5c <__bad_interrupt>
+  1a:	20 c0       	rjmp	.+64     	; 0x5c <__bad_interrupt>
+  1c:	1f c0       	rjmp	.+62     	; 0x5c <__bad_interrupt>
+  1e:	1e c0       	rjmp	.+60     	; 0x5c <__bad_interrupt>
+  20:	1d c0       	rjmp	.+58     	; 0x5c <__bad_interrupt>
+  22:	1c c0       	rjmp	.+56     	; 0x5c <__bad_interrupt>
+  24:	1b c0       	rjmp	.+54     	; 0x5c <__bad_interrupt>
+
+00000026 <__ctors_end>:
+  26:	11 24       	eor	r1, r1
+  28:	1f be       	out	0x3f, r1	; 63
+  2a:	cf e5       	ldi	r28, 0x5F	; 95
+  2c:	d4 e0       	ldi	r29, 0x04	; 4
+  2e:	de bf       	out	0x3e, r29	; 62
+  30:	cd bf       	out	0x3d, r28	; 61
+
+00000032 <__do_copy_data>:
+  32:	10 e0       	ldi	r17, 0x00	; 0
+  34:	a0 e6       	ldi	r26, 0x60	; 96
+  36:	b0 e0       	ldi	r27, 0x00	; 0
+  38:	e6 eb       	ldi	r30, 0xB6	; 182
+  3a:	fd e0       	ldi	r31, 0x0D	; 13
+  3c:	02 c0       	rjmp	.+4      	; 0x42 <__SREG__+0x3>
+  3e:	05 90       	lpm	r0, Z+
+  40:	0d 92       	st	X+, r0
+  42:	a0 3b       	cpi	r26, 0xB0	; 176
+  44:	b1 07       	cpc	r27, r17
+  46:	d9 f7       	brne	.-10     	; 0x3e <__SP_H__>
+
+00000048 <__do_clear_bss>:
+  48:	10 e0       	ldi	r17, 0x00	; 0
+  4a:	a0 eb       	ldi	r26, 0xB0	; 176
+  4c:	b0 e0       	ldi	r27, 0x00	; 0
+  4e:	01 c0       	rjmp	.+2      	; 0x52 <.do_clear_bss_start>
+
+00000050 <.do_clear_bss_loop>:
+  50:	1d 92       	st	X+, r1
+
+00000052 <.do_clear_bss_start>:
+  52:	a0 3b       	cpi	r26, 0xB0	; 176
+  54:	b1 07       	cpc	r27, r17
+  56:	e1 f7       	brne	.-8      	; 0x50 <.do_clear_bss_loop>
+  58:	5f d6       	rcall	.+3262   	; 0xd18 <main>
+  5a:	ab c6       	rjmp	.+3414   	; 0xdb2 <_exit>
+
+0000005c <__bad_interrupt>:
+  5c:	d1 cf       	rjmp	.-94     	; 0x0 <__vectors>
+
+0000005e <__vector_2>:
+	sei();
+	
+}
+
+ISR(INT1_vect)
+{
+  5e:	1f 92       	push	r1
+  60:	0f 92       	push	r0
+  62:	0f b6       	in	r0, 0x3f	; 63
+  64:	0f 92       	push	r0
+  66:	11 24       	eor	r1, r1
+  68:	2f 93       	push	r18
+  6a:	3f 93       	push	r19
+  6c:	8f 93       	push	r24
+  6e:	9f 93       	push	r25
+  70:	ef 93       	push	r30
+  72:	ff 93       	push	r31
+
+		cli();
+  74:	f8 94       	cli
+  76:	83 e2       	ldi	r24, 0x23	; 35
+  78:	90 e0       	ldi	r25, 0x00	; 0
+		//gora_prawo_polkr(tster_polkr_prawo_lewo,Kat_90);
+		for(int i=0;i<35;i++)
+		{
+			PORTC |=0xff;
+  7a:	2f ef       	ldi	r18, 0xFF	; 255
+  7c:	35 b3       	in	r19, 0x15	; 21
+  7e:	25 bb       	out	0x15, r18	; 21
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  80:	e5 e2       	ldi	r30, 0x25	; 37
+  82:	f2 e0       	ldi	r31, 0x02	; 2
+  84:	31 97       	sbiw	r30, 0x01	; 1
+  86:	f1 f7       	brne	.-4      	; 0x84 <__vector_2+0x26>
+  88:	00 c0       	rjmp	.+0      	; 0x8a <__vector_2+0x2c>
+  8a:	00 00       	nop
+			_delay_ms(2.2);
+			PORTC &=0x00;
+  8c:	35 b3       	in	r19, 0x15	; 21
+  8e:	15 ba       	out	0x15, r1	; 21
+  90:	e9 ef       	ldi	r30, 0xF9	; 249
+  92:	f0 e0       	ldi	r31, 0x00	; 0
+  94:	31 97       	sbiw	r30, 0x01	; 1
+  96:	f1 f7       	brne	.-4      	; 0x94 <__vector_2+0x36>
+  98:	00 c0       	rjmp	.+0      	; 0x9a <__vector_2+0x3c>
+  9a:	00 00       	nop
+  9c:	01 97       	sbiw	r24, 0x01	; 1
+ISR(INT1_vect)
+{
+
+		cli();
+		//gora_prawo_polkr(tster_polkr_prawo_lewo,Kat_90);
+		for(int i=0;i<35;i++)
+  9e:	71 f7       	brne	.-36     	; 0x7c <__vector_2+0x1e>
+			PORTC &=0x00;
+			_delay_ms(1); //19.4
+			
+		}
+
+		sei();
+  a0:	78 94       	sei
+	
+}
+  a2:	ff 91       	pop	r31
+  a4:	ef 91       	pop	r30
+  a6:	9f 91       	pop	r25
+  a8:	8f 91       	pop	r24
+  aa:	3f 91       	pop	r19
+  ac:	2f 91       	pop	r18
+  ae:	0f 90       	pop	r0
+  b0:	0f be       	out	0x3f, r0	; 63
+  b2:	0f 90       	pop	r0
+  b4:	1f 90       	pop	r1
+  b6:	18 95       	reti
+
+000000b8 <gora_prawo_polkr>:
+	
+		}
+
+
+void gora_prawo_polkr(int t_ster[], int kr, unsigned char ster)
+{
+  b8:	1f 93       	push	r17
+  ba:	cf 93       	push	r28
+  bc:	df 93       	push	r29
+  be:	58 2f       	mov	r21, r24
+  c0:	19 2f       	mov	r17, r25
+  c2:	eb 01       	movw	r28, r22
+	for(int j=0;j<=kr;j++)
+  c4:	dd 23       	and	r29, r29
+  c6:	0c f5       	brge	.+66     	; 0x10a <gora_prawo_polkr+0x52>
+  c8:	28 c0       	rjmp	.+80     	; 0x11a <gora_prawo_polkr+0x62>
+	{
+		for(int i=0;i<=7;i++)
+		{
+		
+			PORTB =t_ster[i];
+  ca:	b0 81       	ld	r27, Z
+  cc:	32 96       	adiw	r30, 0x02	; 2
+  ce:	b8 bb       	out	0x18, r27	; 24
+  d0:	a7 ee       	ldi	r26, 0xE7	; 231
+  d2:	b3 e0       	ldi	r27, 0x03	; 3
+  d4:	11 97       	sbiw	r26, 0x01	; 1
+  d6:	f1 f7       	brne	.-4      	; 0xd4 <gora_prawo_polkr+0x1c>
+  d8:	00 c0       	rjmp	.+0      	; 0xda <gora_prawo_polkr+0x22>
+  da:	00 00       	nop
+
+void gora_prawo_polkr(int t_ster[], int kr, unsigned char ster)
+{
+	for(int j=0;j<=kr;j++)
+	{
+		for(int i=0;i<=7;i++)
+  dc:	01 96       	adiw	r24, 0x01	; 1
+  de:	88 30       	cpi	r24, 0x08	; 8
+  e0:	91 05       	cpc	r25, r1
+  e2:	99 f7       	brne	.-26     	; 0xca <gora_prawo_polkr+0x12>
+		
+			PORTB =t_ster[i];
+			_delay_ms(4);
+			
+		}
+		if(ster>0)
+  e4:	44 23       	and	r20, r20
+  e6:	59 f0       	breq	.+22     	; 0xfe <gora_prawo_polkr+0x46>
+		{
+			for(int u=0;u<=j;u++)
+  e8:	33 23       	and	r19, r19
+  ea:	4c f0       	brlt	.+18     	; 0xfe <gora_prawo_polkr+0x46>
+  ec:	cb 01       	movw	r24, r22
+  ee:	b0 e1       	ldi	r27, 0x10	; 16
+  f0:	ba 95       	dec	r27
+  f2:	f1 f7       	brne	.-4      	; 0xf0 <gora_prawo_polkr+0x38>
+  f4:	00 c0       	rjmp	.+0      	; 0xf6 <gora_prawo_polkr+0x3e>
+  f6:	01 96       	adiw	r24, 0x01	; 1
+  f8:	28 17       	cp	r18, r24
+  fa:	39 07       	cpc	r19, r25
+  fc:	c4 f7       	brge	.-16     	; 0xee <gora_prawo_polkr+0x36>
+		}
+
+
+void gora_prawo_polkr(int t_ster[], int kr, unsigned char ster)
+{
+	for(int j=0;j<=kr;j++)
+  fe:	2f 5f       	subi	r18, 0xFF	; 255
+ 100:	3f 4f       	sbci	r19, 0xFF	; 255
+ 102:	c2 17       	cp	r28, r18
+ 104:	d3 07       	cpc	r29, r19
+ 106:	2c f4       	brge	.+10     	; 0x112 <gora_prawo_polkr+0x5a>
+ 108:	08 c0       	rjmp	.+16     	; 0x11a <gora_prawo_polkr+0x62>
+ 10a:	20 e0       	ldi	r18, 0x00	; 0
+ 10c:	30 e0       	ldi	r19, 0x00	; 0
+	
+		}
+
+
+void gora_prawo_polkr(int t_ster[], int kr, unsigned char ster)
+{
+ 10e:	60 e0       	ldi	r22, 0x00	; 0
+ 110:	70 e0       	ldi	r23, 0x00	; 0
+	for(int j=0;j<=kr;j++)
+ 112:	e5 2f       	mov	r30, r21
+ 114:	f1 2f       	mov	r31, r17
+	
+		}
+
+
+void gora_prawo_polkr(int t_ster[], int kr, unsigned char ster)
+{
+ 116:	cb 01       	movw	r24, r22
+ 118:	d8 cf       	rjmp	.-80     	; 0xca <gora_prawo_polkr+0x12>
+			{
+				_delay_ms(0.05);
+			}
+		}
+	}
+	PORTB=0x00;
+ 11a:	18 ba       	out	0x18, r1	; 24
+}	
+ 11c:	df 91       	pop	r29
+ 11e:	cf 91       	pop	r28
+ 120:	1f 91       	pop	r17
+ 122:	08 95       	ret
+
+00000124 <dol_lewo_polkr>:
+
+void dol_lewo_polkr(int t_ster[], int kr, unsigned char ster)
+{
+ 124:	ef 92       	push	r14
+ 126:	ff 92       	push	r15
+ 128:	0f 93       	push	r16
+ 12a:	1f 93       	push	r17
+ 12c:	cf 93       	push	r28
+ 12e:	df 93       	push	r29
+ 130:	eb 01       	movw	r28, r22
+	
+	for(int j=0;j<=kr;j++)
+ 132:	dd 23       	and	r29, r29
+ 134:	1c f5       	brge	.+70     	; 0x17c <dol_lewo_polkr+0x58>
+ 136:	31 c0       	rjmp	.+98     	; 0x19a <dol_lewo_polkr+0x76>
+ 138:	32 97       	sbiw	r30, 0x02	; 2
+	{
+		for(int i=7;i>=0;i--)
+		{
+			
+			PORTB =t_ster[i];
+ 13a:	80 81       	ld	r24, Z
+ 13c:	88 bb       	out	0x18, r24	; 24
+ 13e:	87 ee       	ldi	r24, 0xE7	; 231
+ 140:	93 e0       	ldi	r25, 0x03	; 3
+ 142:	01 97       	sbiw	r24, 0x01	; 1
+ 144:	f1 f7       	brne	.-4      	; 0x142 <dol_lewo_polkr+0x1e>
+ 146:	00 c0       	rjmp	.+0      	; 0x148 <dol_lewo_polkr+0x24>
+ 148:	00 00       	nop
+			_delay_ms(4);
+		if(ster>0)
+ 14a:	44 23       	and	r20, r20
+ 14c:	59 f0       	breq	.+22     	; 0x164 <dol_lewo_polkr+0x40>
+		{
+			for(int u=0;u<=j;u++)
+ 14e:	33 23       	and	r19, r19
+ 150:	4c f0       	brlt	.+18     	; 0x164 <dol_lewo_polkr+0x40>
+ 152:	cd 01       	movw	r24, r26
+ 154:	50 e1       	ldi	r21, 0x10	; 16
+ 156:	5a 95       	dec	r21
+ 158:	f1 f7       	brne	.-4      	; 0x156 <dol_lewo_polkr+0x32>
+ 15a:	00 c0       	rjmp	.+0      	; 0x15c <dol_lewo_polkr+0x38>
+ 15c:	01 96       	adiw	r24, 0x01	; 1
+ 15e:	28 17       	cp	r18, r24
+ 160:	39 07       	cpc	r19, r25
+ 162:	c4 f7       	brge	.-16     	; 0x154 <dol_lewo_polkr+0x30>
+void dol_lewo_polkr(int t_ster[], int kr, unsigned char ster)
+{
+	
+	for(int j=0;j<=kr;j++)
+	{
+		for(int i=7;i>=0;i--)
+ 164:	61 50       	subi	r22, 0x01	; 1
+ 166:	70 40       	sbci	r23, 0x00	; 0
+ 168:	8f ef       	ldi	r24, 0xFF	; 255
+ 16a:	6f 3f       	cpi	r22, 0xFF	; 255
+ 16c:	78 07       	cpc	r23, r24
+ 16e:	21 f7       	brne	.-56     	; 0x138 <dol_lewo_polkr+0x14>
+}	
+
+void dol_lewo_polkr(int t_ster[], int kr, unsigned char ster)
+{
+	
+	for(int j=0;j<=kr;j++)
+ 170:	2f 5f       	subi	r18, 0xFF	; 255
+ 172:	3f 4f       	sbci	r19, 0xFF	; 255
+ 174:	c2 17       	cp	r28, r18
+ 176:	d3 07       	cpc	r29, r19
+ 178:	6c f4       	brge	.+26     	; 0x194 <dol_lewo_polkr+0x70>
+ 17a:	0f c0       	rjmp	.+30     	; 0x19a <dol_lewo_polkr+0x76>
+ 17c:	20 e0       	ldi	r18, 0x00	; 0
+ 17e:	30 e0       	ldi	r19, 0x00	; 0
+		}
+	}
+	PORTB=0x00;
+}	
+
+void dol_lewo_polkr(int t_ster[], int kr, unsigned char ster)
+ 180:	8c 01       	movw	r16, r24
+ 182:	00 5f       	subi	r16, 0xF0	; 240
+ 184:	1f 4f       	sbci	r17, 0xFF	; 255
+ 186:	0f 2e       	mov	r0, r31
+ 188:	f7 e0       	ldi	r31, 0x07	; 7
+ 18a:	ef 2e       	mov	r14, r31
+ 18c:	ff 24       	eor	r15, r15
+ 18e:	f0 2d       	mov	r31, r0
+			
+			PORTB =t_ster[i];
+			_delay_ms(4);
+		if(ster>0)
+		{
+			for(int u=0;u<=j;u++)
+ 190:	a0 e0       	ldi	r26, 0x00	; 0
+ 192:	b0 e0       	ldi	r27, 0x00	; 0
+		}
+	}
+	PORTB=0x00;
+}	
+
+void dol_lewo_polkr(int t_ster[], int kr, unsigned char ster)
+ 194:	f8 01       	movw	r30, r16
+ 196:	b7 01       	movw	r22, r14
+ 198:	cf cf       	rjmp	.-98     	; 0x138 <dol_lewo_polkr+0x14>
+			
+		}
+		
+		
+	}
+	PORTB=0x00;
+ 19a:	18 ba       	out	0x18, r1	; 24
+}
+ 19c:	df 91       	pop	r29
+ 19e:	cf 91       	pop	r28
+ 1a0:	1f 91       	pop	r17
+ 1a2:	0f 91       	pop	r16
+ 1a4:	ff 90       	pop	r15
+ 1a6:	ef 90       	pop	r14
+ 1a8:	08 95       	ret
+
+000001aa <gora_prawo_pelnokr>:
+
+
+
+void gora_prawo_pelnokr(int t_ster[], int kr,unsigned char ster)
+{
+ 1aa:	1f 93       	push	r17
+ 1ac:	cf 93       	push	r28
+ 1ae:	df 93       	push	r29
+ 1b0:	58 2f       	mov	r21, r24
+ 1b2:	19 2f       	mov	r17, r25
+ 1b4:	eb 01       	movw	r28, r22
+	for(int j=0;j<=kr;j++)
+ 1b6:	dd 23       	and	r29, r29
+ 1b8:	0c f5       	brge	.+66     	; 0x1fc <gora_prawo_pelnokr+0x52>
+ 1ba:	28 c0       	rjmp	.+80     	; 0x20c <gora_prawo_pelnokr+0x62>
+	{
+		for(int i=0;i<=3;i++)
+		{
+			
+			PORTB =t_ster[i];
+ 1bc:	b0 81       	ld	r27, Z
+ 1be:	32 96       	adiw	r30, 0x02	; 2
+ 1c0:	b8 bb       	out	0x18, r27	; 24
+ 1c2:	a7 ee       	ldi	r26, 0xE7	; 231
+ 1c4:	b3 e0       	ldi	r27, 0x03	; 3
+ 1c6:	11 97       	sbiw	r26, 0x01	; 1
+ 1c8:	f1 f7       	brne	.-4      	; 0x1c6 <gora_prawo_pelnokr+0x1c>
+ 1ca:	00 c0       	rjmp	.+0      	; 0x1cc <gora_prawo_pelnokr+0x22>
+ 1cc:	00 00       	nop
+
+void gora_prawo_pelnokr(int t_ster[], int kr,unsigned char ster)
+{
+	for(int j=0;j<=kr;j++)
+	{
+		for(int i=0;i<=3;i++)
+ 1ce:	01 96       	adiw	r24, 0x01	; 1
+ 1d0:	84 30       	cpi	r24, 0x04	; 4
+ 1d2:	91 05       	cpc	r25, r1
+ 1d4:	99 f7       	brne	.-26     	; 0x1bc <gora_prawo_pelnokr+0x12>
+			
+			PORTB =t_ster[i];
+			_delay_ms(4);
+			
+		}
+		if(ster>0)
+ 1d6:	44 23       	and	r20, r20
+ 1d8:	59 f0       	breq	.+22     	; 0x1f0 <gora_prawo_pelnokr+0x46>
+		{
+			for(int u=0;u<=j;u++)
+ 1da:	33 23       	and	r19, r19
+ 1dc:	4c f0       	brlt	.+18     	; 0x1f0 <gora_prawo_pelnokr+0x46>
+ 1de:	cb 01       	movw	r24, r22
+ 1e0:	b0 e1       	ldi	r27, 0x10	; 16
+ 1e2:	ba 95       	dec	r27
+ 1e4:	f1 f7       	brne	.-4      	; 0x1e2 <gora_prawo_pelnokr+0x38>
+ 1e6:	00 c0       	rjmp	.+0      	; 0x1e8 <gora_prawo_pelnokr+0x3e>
+ 1e8:	01 96       	adiw	r24, 0x01	; 1
+ 1ea:	28 17       	cp	r18, r24
+ 1ec:	39 07       	cpc	r19, r25
+ 1ee:	c4 f7       	brge	.-16     	; 0x1e0 <gora_prawo_pelnokr+0x36>
+
+
+
+void gora_prawo_pelnokr(int t_ster[], int kr,unsigned char ster)
+{
+	for(int j=0;j<=kr;j++)
+ 1f0:	2f 5f       	subi	r18, 0xFF	; 255
+ 1f2:	3f 4f       	sbci	r19, 0xFF	; 255
+ 1f4:	c2 17       	cp	r28, r18
+ 1f6:	d3 07       	cpc	r29, r19
+ 1f8:	2c f4       	brge	.+10     	; 0x204 <gora_prawo_pelnokr+0x5a>
+ 1fa:	08 c0       	rjmp	.+16     	; 0x20c <gora_prawo_pelnokr+0x62>
+ 1fc:	20 e0       	ldi	r18, 0x00	; 0
+ 1fe:	30 e0       	ldi	r19, 0x00	; 0
+}
+
+
+
+void gora_prawo_pelnokr(int t_ster[], int kr,unsigned char ster)
+{
+ 200:	60 e0       	ldi	r22, 0x00	; 0
+ 202:	70 e0       	ldi	r23, 0x00	; 0
+	for(int j=0;j<=kr;j++)
+ 204:	e5 2f       	mov	r30, r21
+ 206:	f1 2f       	mov	r31, r17
+}
+
+
+
+void gora_prawo_pelnokr(int t_ster[], int kr,unsigned char ster)
+{
+ 208:	cb 01       	movw	r24, r22
+ 20a:	d8 cf       	rjmp	.-80     	; 0x1bc <gora_prawo_pelnokr+0x12>
+			{
+				_delay_ms(0.05);
+			}
+		}
+	}
+	PORTB=0x00;
+ 20c:	18 ba       	out	0x18, r1	; 24
+}
+ 20e:	df 91       	pop	r29
+ 210:	cf 91       	pop	r28
+ 212:	1f 91       	pop	r17
+ 214:	08 95       	ret
+
+00000216 <dol_lewo_pelnokr>:
+
+void dol_lewo_pelnokr(int t_ster[], int kr,unsigned char ster)
+{
+ 216:	ef 92       	push	r14
+ 218:	ff 92       	push	r15
+ 21a:	0f 93       	push	r16
+ 21c:	1f 93       	push	r17
+ 21e:	cf 93       	push	r28
+ 220:	df 93       	push	r29
+ 222:	db 01       	movw	r26, r22
+	for(int j=0;j<=kr;j++)
+ 224:	bb 23       	and	r27, r27
+ 226:	14 f5       	brge	.+68     	; 0x26c <dol_lewo_pelnokr+0x56>
+ 228:	30 c0       	rjmp	.+96     	; 0x28a <dol_lewo_pelnokr+0x74>
+ 22a:	32 97       	sbiw	r30, 0x02	; 2
+	{
+		for(int i=3;i>=0;i--)
+		{
+			
+			PORTB =t_ster[i];
+ 22c:	50 81       	ld	r21, Z
+ 22e:	58 bb       	out	0x18, r21	; 24
+ 230:	c7 ee       	ldi	r28, 0xE7	; 231
+ 232:	d3 e0       	ldi	r29, 0x03	; 3
+ 234:	21 97       	sbiw	r28, 0x01	; 1
+ 236:	f1 f7       	brne	.-4      	; 0x234 <dol_lewo_pelnokr+0x1e>
+ 238:	00 c0       	rjmp	.+0      	; 0x23a <dol_lewo_pelnokr+0x24>
+ 23a:	00 00       	nop
+
+void dol_lewo_pelnokr(int t_ster[], int kr,unsigned char ster)
+{
+	for(int j=0;j<=kr;j++)
+	{
+		for(int i=3;i>=0;i--)
+ 23c:	01 97       	sbiw	r24, 0x01	; 1
+ 23e:	df ef       	ldi	r29, 0xFF	; 255
+ 240:	8f 3f       	cpi	r24, 0xFF	; 255
+ 242:	9d 07       	cpc	r25, r29
+ 244:	91 f7       	brne	.-28     	; 0x22a <dol_lewo_pelnokr+0x14>
+			PORTB =t_ster[i];
+			_delay_ms(4);
+			
+			
+		}
+		if(ster>0)
+ 246:	44 23       	and	r20, r20
+ 248:	59 f0       	breq	.+22     	; 0x260 <dol_lewo_pelnokr+0x4a>
+		{
+			for(int u=0;u<=j;u++)
+ 24a:	33 23       	and	r19, r19
+ 24c:	4c f0       	brlt	.+18     	; 0x260 <dol_lewo_pelnokr+0x4a>
+ 24e:	c8 01       	movw	r24, r16
+ 250:	50 e1       	ldi	r21, 0x10	; 16
+ 252:	5a 95       	dec	r21
+ 254:	f1 f7       	brne	.-4      	; 0x252 <dol_lewo_pelnokr+0x3c>
+ 256:	00 c0       	rjmp	.+0      	; 0x258 <dol_lewo_pelnokr+0x42>
+ 258:	01 96       	adiw	r24, 0x01	; 1
+ 25a:	28 17       	cp	r18, r24
+ 25c:	39 07       	cpc	r19, r25
+ 25e:	c4 f7       	brge	.-16     	; 0x250 <dol_lewo_pelnokr+0x3a>
+	PORTB=0x00;
+}
+
+void dol_lewo_pelnokr(int t_ster[], int kr,unsigned char ster)
+{
+	for(int j=0;j<=kr;j++)
+ 260:	2f 5f       	subi	r18, 0xFF	; 255
+ 262:	3f 4f       	sbci	r19, 0xFF	; 255
+ 264:	a2 17       	cp	r26, r18
+ 266:	b3 07       	cpc	r27, r19
+ 268:	6c f4       	brge	.+26     	; 0x284 <dol_lewo_pelnokr+0x6e>
+ 26a:	0f c0       	rjmp	.+30     	; 0x28a <dol_lewo_pelnokr+0x74>
+ 26c:	20 e0       	ldi	r18, 0x00	; 0
+ 26e:	30 e0       	ldi	r19, 0x00	; 0
+		}
+	}
+	PORTB=0x00;
+}
+
+void dol_lewo_pelnokr(int t_ster[], int kr,unsigned char ster)
+ 270:	bc 01       	movw	r22, r24
+ 272:	68 5f       	subi	r22, 0xF8	; 248
+ 274:	7f 4f       	sbci	r23, 0xFF	; 255
+ 276:	0f 2e       	mov	r0, r31
+ 278:	f3 e0       	ldi	r31, 0x03	; 3
+ 27a:	ef 2e       	mov	r14, r31
+ 27c:	ff 24       	eor	r15, r15
+ 27e:	f0 2d       	mov	r31, r0
+			
+			
+		}
+		if(ster>0)
+		{
+			for(int u=0;u<=j;u++)
+ 280:	00 e0       	ldi	r16, 0x00	; 0
+ 282:	10 e0       	ldi	r17, 0x00	; 0
+		}
+	}
+	PORTB=0x00;
+}
+
+void dol_lewo_pelnokr(int t_ster[], int kr,unsigned char ster)
+ 284:	fb 01       	movw	r30, r22
+ 286:	c7 01       	movw	r24, r14
+ 288:	d0 cf       	rjmp	.-96     	; 0x22a <dol_lewo_pelnokr+0x14>
+			{
+				_delay_ms(0.05);
+			}
+		}
+	}
+	PORTB=0x00;
+ 28a:	18 ba       	out	0x18, r1	; 24
+}
+ 28c:	df 91       	pop	r29
+ 28e:	cf 91       	pop	r28
+ 290:	1f 91       	pop	r17
+ 292:	0f 91       	pop	r16
+ 294:	ff 90       	pop	r15
+ 296:	ef 90       	pop	r14
+ 298:	08 95       	ret
+
+0000029a <cala_reka__wlacz>:
+
+
+/*Sterowanie palcami*/
+
+void cala_reka__wlacz()
+{
+ 29a:	83 e2       	ldi	r24, 0x23	; 35
+ 29c:	90 e0       	ldi	r25, 0x00	; 0
+	
+	for(int i=0;i<35;i++)
+	{
+		PORTC |=0xff;
+ 29e:	2f ef       	ldi	r18, 0xFF	; 255
+ 2a0:	35 b3       	in	r19, 0x15	; 21
+ 2a2:	25 bb       	out	0x15, r18	; 21
+ 2a4:	e2 e1       	ldi	r30, 0x12	; 18
+ 2a6:	f1 e0       	ldi	r31, 0x01	; 1
+ 2a8:	31 97       	sbiw	r30, 0x01	; 1
+ 2aa:	f1 f7       	brne	.-4      	; 0x2a8 <cala_reka__wlacz+0xe>
+ 2ac:	00 c0       	rjmp	.+0      	; 0x2ae <cala_reka__wlacz+0x14>
+ 2ae:	00 00       	nop
+		_delay_ms(1.1);
+		PORTC &=0x00;
+ 2b0:	35 b3       	in	r19, 0x15	; 21
+ 2b2:	15 ba       	out	0x15, r1	; 21
+ 2b4:	e9 e9       	ldi	r30, 0x99	; 153
+ 2b6:	f0 e1       	ldi	r31, 0x10	; 16
+ 2b8:	31 97       	sbiw	r30, 0x01	; 1
+ 2ba:	f1 f7       	brne	.-4      	; 0x2b8 <cala_reka__wlacz+0x1e>
+ 2bc:	00 c0       	rjmp	.+0      	; 0x2be <cala_reka__wlacz+0x24>
+ 2be:	00 00       	nop
+ 2c0:	01 97       	sbiw	r24, 0x01	; 1
+/*Sterowanie palcami*/
+
+void cala_reka__wlacz()
+{
+	
+	for(int i=0;i<35;i++)
+ 2c2:	71 f7       	brne	.-36     	; 0x2a0 <cala_reka__wlacz+0x6>
+		PORTC &=0x00;
+		_delay_ms(17); //19.4
+	}
+
+	
+}
+ 2c4:	08 95       	ret
+
+000002c6 <cala_reka__wylacz>:
+
+void cala_reka__wylacz()
+{
+ 2c6:	83 e2       	ldi	r24, 0x23	; 35
+ 2c8:	90 e0       	ldi	r25, 0x00	; 0
+	
+	for(int i=0;i<35;i++)
+	{
+		PORTC |=0xff;
+ 2ca:	2f ef       	ldi	r18, 0xFF	; 255
+ 2cc:	35 b3       	in	r19, 0x15	; 21
+ 2ce:	25 bb       	out	0x15, r18	; 21
+ 2d0:	e5 e2       	ldi	r30, 0x25	; 37
+ 2d2:	f2 e0       	ldi	r31, 0x02	; 2
+ 2d4:	31 97       	sbiw	r30, 0x01	; 1
+ 2d6:	f1 f7       	brne	.-4      	; 0x2d4 <cala_reka__wylacz+0xe>
+ 2d8:	00 c0       	rjmp	.+0      	; 0x2da <cala_reka__wylacz+0x14>
+ 2da:	00 00       	nop
+		_delay_ms(2.2);
+		PORTC &=0x00;
+ 2dc:	35 b3       	in	r19, 0x15	; 21
+ 2de:	15 ba       	out	0x15, r1	; 21
+ 2e0:	e9 e9       	ldi	r30, 0x99	; 153
+ 2e2:	f0 e1       	ldi	r31, 0x10	; 16
+ 2e4:	31 97       	sbiw	r30, 0x01	; 1
+ 2e6:	f1 f7       	brne	.-4      	; 0x2e4 <cala_reka__wylacz+0x1e>
+ 2e8:	00 c0       	rjmp	.+0      	; 0x2ea <cala_reka__wylacz+0x24>
+ 2ea:	00 00       	nop
+ 2ec:	01 97       	sbiw	r24, 0x01	; 1
+}
+
+void cala_reka__wylacz()
+{
+	
+	for(int i=0;i<35;i++)
+ 2ee:	71 f7       	brne	.-36     	; 0x2cc <cala_reka__wylacz+0x6>
+		PORTC &=0x00;
+		_delay_ms(17); //19.4
+	}
+	
+	
+}
+ 2f0:	08 95       	ret
+
+000002f2 <palec1_on>:
+
+void palec1_on()
+{
+ 2f2:	83 e2       	ldi	r24, 0x23	; 35
+ 2f4:	90 e0       	ldi	r25, 0x00	; 0
+	for(int i=0;i<35;i++)
+	{
+		PORTC |=0x01;
+ 2f6:	a8 9a       	sbi	0x15, 0	; 21
+ 2f8:	e2 e1       	ldi	r30, 0x12	; 18
+ 2fa:	f1 e0       	ldi	r31, 0x01	; 1
+ 2fc:	31 97       	sbiw	r30, 0x01	; 1
+ 2fe:	f1 f7       	brne	.-4      	; 0x2fc <palec1_on+0xa>
+ 300:	00 c0       	rjmp	.+0      	; 0x302 <palec1_on+0x10>
+ 302:	00 00       	nop
+		_delay_ms(1.1);
+		PORTC &=0xfe;
+ 304:	a8 98       	cbi	0x15, 0	; 21
+ 306:	e9 e9       	ldi	r30, 0x99	; 153
+ 308:	f0 e1       	ldi	r31, 0x10	; 16
+ 30a:	31 97       	sbiw	r30, 0x01	; 1
+ 30c:	f1 f7       	brne	.-4      	; 0x30a <palec1_on+0x18>
+ 30e:	00 c0       	rjmp	.+0      	; 0x310 <palec1_on+0x1e>
+ 310:	00 00       	nop
+ 312:	01 97       	sbiw	r24, 0x01	; 1
+	
+}
+
+void palec1_on()
+{
+	for(int i=0;i<35;i++)
+ 314:	81 f7       	brne	.-32     	; 0x2f6 <palec1_on+0x4>
+		PORTC |=0x01;
+		_delay_ms(1.1);
+		PORTC &=0xfe;
+		_delay_ms(17); //19.4
+	}
+}	
+ 316:	08 95       	ret
+
+00000318 <palec2_on>:
+
+void palec2_on()
+{	
+ 318:	83 e2       	ldi	r24, 0x23	; 35
+ 31a:	90 e0       	ldi	r25, 0x00	; 0
+	for(int i=0;i<35;i++)
+	{
+		PORTC |=0x02;
+ 31c:	a9 9a       	sbi	0x15, 1	; 21
+ 31e:	e2 e1       	ldi	r30, 0x12	; 18
+ 320:	f1 e0       	ldi	r31, 0x01	; 1
+ 322:	31 97       	sbiw	r30, 0x01	; 1
+ 324:	f1 f7       	brne	.-4      	; 0x322 <palec2_on+0xa>
+ 326:	00 c0       	rjmp	.+0      	; 0x328 <palec2_on+0x10>
+ 328:	00 00       	nop
+		_delay_ms(1.1);
+		PORTC &=0xfd;
+ 32a:	a9 98       	cbi	0x15, 1	; 21
+ 32c:	e9 e9       	ldi	r30, 0x99	; 153
+ 32e:	f0 e1       	ldi	r31, 0x10	; 16
+ 330:	31 97       	sbiw	r30, 0x01	; 1
+ 332:	f1 f7       	brne	.-4      	; 0x330 <palec2_on+0x18>
+ 334:	00 c0       	rjmp	.+0      	; 0x336 <palec2_on+0x1e>
+ 336:	00 00       	nop
+ 338:	01 97       	sbiw	r24, 0x01	; 1
+	}
+}	
+
+void palec2_on()
+{	
+	for(int i=0;i<35;i++)
+ 33a:	81 f7       	brne	.-32     	; 0x31c <palec2_on+0x4>
+		PORTC |=0x02;
+		_delay_ms(1.1);
+		PORTC &=0xfd;
+		_delay_ms(17); //19.4
+	}
+}	
+ 33c:	08 95       	ret
+
+0000033e <palec3_on>:
+
+void palec3_on()
+{	
+ 33e:	83 e2       	ldi	r24, 0x23	; 35
+ 340:	90 e0       	ldi	r25, 0x00	; 0
+	for(int i=0;i<35;i++)
+	{
+		PORTC |=0x04;
+ 342:	aa 9a       	sbi	0x15, 2	; 21
+ 344:	e2 e1       	ldi	r30, 0x12	; 18
+ 346:	f1 e0       	ldi	r31, 0x01	; 1
+ 348:	31 97       	sbiw	r30, 0x01	; 1
+ 34a:	f1 f7       	brne	.-4      	; 0x348 <palec3_on+0xa>
+ 34c:	00 c0       	rjmp	.+0      	; 0x34e <palec3_on+0x10>
+ 34e:	00 00       	nop
+		_delay_ms(1.1);
+		PORTC &=0xfb;
+ 350:	aa 98       	cbi	0x15, 2	; 21
+ 352:	e9 e9       	ldi	r30, 0x99	; 153
+ 354:	f0 e1       	ldi	r31, 0x10	; 16
+ 356:	31 97       	sbiw	r30, 0x01	; 1
+ 358:	f1 f7       	brne	.-4      	; 0x356 <palec3_on+0x18>
+ 35a:	00 c0       	rjmp	.+0      	; 0x35c <palec3_on+0x1e>
+ 35c:	00 00       	nop
+ 35e:	01 97       	sbiw	r24, 0x01	; 1
+	}
+}	
+
+void palec3_on()
+{	
+	for(int i=0;i<35;i++)
+ 360:	81 f7       	brne	.-32     	; 0x342 <palec3_on+0x4>
+		PORTC |=0x04;
+		_delay_ms(1.1);
+		PORTC &=0xfb;
+		_delay_ms(17); //19.4
+	}
+}	
+ 362:	08 95       	ret
+
+00000364 <palec4_on>:
+
+void palec4_on()
+{
+ 364:	83 e2       	ldi	r24, 0x23	; 35
+ 366:	90 e0       	ldi	r25, 0x00	; 0
+	for(int i=0;i<35;i++)
+	{
+		PORTC |=0x08;
+ 368:	ab 9a       	sbi	0x15, 3	; 21
+ 36a:	e2 e1       	ldi	r30, 0x12	; 18
+ 36c:	f1 e0       	ldi	r31, 0x01	; 1
+ 36e:	31 97       	sbiw	r30, 0x01	; 1
+ 370:	f1 f7       	brne	.-4      	; 0x36e <palec4_on+0xa>
+ 372:	00 c0       	rjmp	.+0      	; 0x374 <palec4_on+0x10>
+ 374:	00 00       	nop
+		_delay_ms(1.1);
+		PORTC &=0xf7;
+ 376:	ab 98       	cbi	0x15, 3	; 21
+ 378:	e9 e9       	ldi	r30, 0x99	; 153
+ 37a:	f0 e1       	ldi	r31, 0x10	; 16
+ 37c:	31 97       	sbiw	r30, 0x01	; 1
+ 37e:	f1 f7       	brne	.-4      	; 0x37c <palec4_on+0x18>
+ 380:	00 c0       	rjmp	.+0      	; 0x382 <palec4_on+0x1e>
+ 382:	00 00       	nop
+ 384:	01 97       	sbiw	r24, 0x01	; 1
+	}
+}	
+
+void palec4_on()
+{
+	for(int i=0;i<35;i++)
+ 386:	81 f7       	brne	.-32     	; 0x368 <palec4_on+0x4>
+		PORTC |=0x08;
+		_delay_ms(1.1);
+		PORTC &=0xf7;
+		_delay_ms(17); //19.4
+	}
+}
+ 388:	08 95       	ret
+
+0000038a <palec5_on>:
+
+void palec5_on()
+{	
+ 38a:	83 e2       	ldi	r24, 0x23	; 35
+ 38c:	90 e0       	ldi	r25, 0x00	; 0
+	for(int i=0;i<35;i++)
+	{
+		PORTC |=0x10;
+ 38e:	ac 9a       	sbi	0x15, 4	; 21
+ 390:	e2 e1       	ldi	r30, 0x12	; 18
+ 392:	f1 e0       	ldi	r31, 0x01	; 1
+ 394:	31 97       	sbiw	r30, 0x01	; 1
+ 396:	f1 f7       	brne	.-4      	; 0x394 <palec5_on+0xa>
+ 398:	00 c0       	rjmp	.+0      	; 0x39a <palec5_on+0x10>
+ 39a:	00 00       	nop
+		_delay_ms(1.1);
+		PORTC &=0xef;
+ 39c:	ac 98       	cbi	0x15, 4	; 21
+ 39e:	e9 e9       	ldi	r30, 0x99	; 153
+ 3a0:	f0 e1       	ldi	r31, 0x10	; 16
+ 3a2:	31 97       	sbiw	r30, 0x01	; 1
+ 3a4:	f1 f7       	brne	.-4      	; 0x3a2 <palec5_on+0x18>
+ 3a6:	00 c0       	rjmp	.+0      	; 0x3a8 <palec5_on+0x1e>
+ 3a8:	00 00       	nop
+ 3aa:	01 97       	sbiw	r24, 0x01	; 1
+	}
+}
+
+void palec5_on()
+{	
+	for(int i=0;i<35;i++)
+ 3ac:	81 f7       	brne	.-32     	; 0x38e <palec5_on+0x4>
+		PORTC |=0x10;
+		_delay_ms(1.1);
+		PORTC &=0xef;
+		_delay_ms(17); //19.4
+	}
+}
+ 3ae:	08 95       	ret
+
+000003b0 <palec1_off>:
+
+//
+
+void palec1_off()
+{
+ 3b0:	83 e2       	ldi	r24, 0x23	; 35
+ 3b2:	90 e0       	ldi	r25, 0x00	; 0
+	for(int i=0;i<35;i++)
+	{
+		PORTC |=0x01;
+ 3b4:	a8 9a       	sbi	0x15, 0	; 21
+ 3b6:	e5 e2       	ldi	r30, 0x25	; 37
+ 3b8:	f2 e0       	ldi	r31, 0x02	; 2
+ 3ba:	31 97       	sbiw	r30, 0x01	; 1
+ 3bc:	f1 f7       	brne	.-4      	; 0x3ba <palec1_off+0xa>
+ 3be:	00 c0       	rjmp	.+0      	; 0x3c0 <palec1_off+0x10>
+ 3c0:	00 00       	nop
+		_delay_ms(2.2);
+		PORTC &=0xfe;
+ 3c2:	a8 98       	cbi	0x15, 0	; 21
+ 3c4:	e9 e9       	ldi	r30, 0x99	; 153
+ 3c6:	f0 e1       	ldi	r31, 0x10	; 16
+ 3c8:	31 97       	sbiw	r30, 0x01	; 1
+ 3ca:	f1 f7       	brne	.-4      	; 0x3c8 <palec1_off+0x18>
+ 3cc:	00 c0       	rjmp	.+0      	; 0x3ce <palec1_off+0x1e>
+ 3ce:	00 00       	nop
+ 3d0:	01 97       	sbiw	r24, 0x01	; 1
+
+//
+
+void palec1_off()
+{
+	for(int i=0;i<35;i++)
+ 3d2:	81 f7       	brne	.-32     	; 0x3b4 <palec1_off+0x4>
+		PORTC |=0x01;
+		_delay_ms(2.2);
+		PORTC &=0xfe;
+		_delay_ms(17); //19.4
+	}
+}
+ 3d4:	08 95       	ret
+
+000003d6 <palec2_off>:
+
+void palec2_off()
+{
+ 3d6:	83 e2       	ldi	r24, 0x23	; 35
+ 3d8:	90 e0       	ldi	r25, 0x00	; 0
+	for(int i=0;i<35;i++)
+	{
+		PORTC |=0x02;
+ 3da:	a9 9a       	sbi	0x15, 1	; 21
+ 3dc:	e5 e2       	ldi	r30, 0x25	; 37
+ 3de:	f2 e0       	ldi	r31, 0x02	; 2
+ 3e0:	31 97       	sbiw	r30, 0x01	; 1
+ 3e2:	f1 f7       	brne	.-4      	; 0x3e0 <palec2_off+0xa>
+ 3e4:	00 c0       	rjmp	.+0      	; 0x3e6 <palec2_off+0x10>
+ 3e6:	00 00       	nop
+		_delay_ms(2.2);
+		PORTC &=0xfd;
+ 3e8:	a9 98       	cbi	0x15, 1	; 21
+ 3ea:	e9 e9       	ldi	r30, 0x99	; 153
+ 3ec:	f0 e1       	ldi	r31, 0x10	; 16
+ 3ee:	31 97       	sbiw	r30, 0x01	; 1
+ 3f0:	f1 f7       	brne	.-4      	; 0x3ee <palec2_off+0x18>
+ 3f2:	00 c0       	rjmp	.+0      	; 0x3f4 <palec2_off+0x1e>
+ 3f4:	00 00       	nop
+ 3f6:	01 97       	sbiw	r24, 0x01	; 1
+	}
+}
+
+void palec2_off()
+{
+	for(int i=0;i<35;i++)
+ 3f8:	81 f7       	brne	.-32     	; 0x3da <palec2_off+0x4>
+		PORTC |=0x02;
+		_delay_ms(2.2);
+		PORTC &=0xfd;
+		_delay_ms(17); //19.4
+	}
+}
+ 3fa:	08 95       	ret
+
+000003fc <palec3_off>:
+
+void palec3_off()
+{
+ 3fc:	83 e2       	ldi	r24, 0x23	; 35
+ 3fe:	90 e0       	ldi	r25, 0x00	; 0
+	for(int i=0;i<35;i++)
+	{
+		PORTC |=0x04;
+ 400:	aa 9a       	sbi	0x15, 2	; 21
+ 402:	e5 e2       	ldi	r30, 0x25	; 37
+ 404:	f2 e0       	ldi	r31, 0x02	; 2
+ 406:	31 97       	sbiw	r30, 0x01	; 1
+ 408:	f1 f7       	brne	.-4      	; 0x406 <palec3_off+0xa>
+ 40a:	00 c0       	rjmp	.+0      	; 0x40c <palec3_off+0x10>
+ 40c:	00 00       	nop
+		_delay_ms(2.2);
+		PORTC &=0xfb;
+ 40e:	aa 98       	cbi	0x15, 2	; 21
+ 410:	e9 e9       	ldi	r30, 0x99	; 153
+ 412:	f0 e1       	ldi	r31, 0x10	; 16
+ 414:	31 97       	sbiw	r30, 0x01	; 1
+ 416:	f1 f7       	brne	.-4      	; 0x414 <palec3_off+0x18>
+ 418:	00 c0       	rjmp	.+0      	; 0x41a <palec3_off+0x1e>
+ 41a:	00 00       	nop
+ 41c:	01 97       	sbiw	r24, 0x01	; 1
+	}
+}
+
+void palec3_off()
+{
+	for(int i=0;i<35;i++)
+ 41e:	81 f7       	brne	.-32     	; 0x400 <palec3_off+0x4>
+		PORTC |=0x04;
+		_delay_ms(2.2);
+		PORTC &=0xfb;
+		_delay_ms(17); //19.4
+	}
+}
+ 420:	08 95       	ret
+
+00000422 <palec4_off>:
+
+void palec4_off()
+{
+ 422:	83 e2       	ldi	r24, 0x23	; 35
+ 424:	90 e0       	ldi	r25, 0x00	; 0
+	for(int i=0;i<35;i++)
+	{
+		PORTC |=0x08;
+ 426:	ab 9a       	sbi	0x15, 3	; 21
+ 428:	e5 e2       	ldi	r30, 0x25	; 37
+ 42a:	f2 e0       	ldi	r31, 0x02	; 2
+ 42c:	31 97       	sbiw	r30, 0x01	; 1
+ 42e:	f1 f7       	brne	.-4      	; 0x42c <palec4_off+0xa>
+ 430:	00 c0       	rjmp	.+0      	; 0x432 <palec4_off+0x10>
+ 432:	00 00       	nop
+		_delay_ms(2.2);
+		PORTC &=0xf7;
+ 434:	ab 98       	cbi	0x15, 3	; 21
+ 436:	e9 e9       	ldi	r30, 0x99	; 153
+ 438:	f0 e1       	ldi	r31, 0x10	; 16
+ 43a:	31 97       	sbiw	r30, 0x01	; 1
+ 43c:	f1 f7       	brne	.-4      	; 0x43a <palec4_off+0x18>
+ 43e:	00 c0       	rjmp	.+0      	; 0x440 <palec4_off+0x1e>
+ 440:	00 00       	nop
+ 442:	01 97       	sbiw	r24, 0x01	; 1
+	}
+}
+
+void palec4_off()
+{
+	for(int i=0;i<35;i++)
+ 444:	81 f7       	brne	.-32     	; 0x426 <palec4_off+0x4>
+		PORTC |=0x08;
+		_delay_ms(2.2);
+		PORTC &=0xf7;
+		_delay_ms(17); //19.4
+	}
+}
+ 446:	08 95       	ret
+
+00000448 <palec5_off>:
+
+void palec5_off()
+{
+ 448:	83 e2       	ldi	r24, 0x23	; 35
+ 44a:	90 e0       	ldi	r25, 0x00	; 0
+	for(int i=0;i<35;i++)
+	{
+		PORTC |=0x10;
+ 44c:	ac 9a       	sbi	0x15, 4	; 21
+ 44e:	e5 e2       	ldi	r30, 0x25	; 37
+ 450:	f2 e0       	ldi	r31, 0x02	; 2
+ 452:	31 97       	sbiw	r30, 0x01	; 1
+ 454:	f1 f7       	brne	.-4      	; 0x452 <palec5_off+0xa>
+ 456:	00 c0       	rjmp	.+0      	; 0x458 <palec5_off+0x10>
+ 458:	00 00       	nop
+		_delay_ms(2.2);
+		PORTC &=0xef;
+ 45a:	ac 98       	cbi	0x15, 4	; 21
+ 45c:	e9 e9       	ldi	r30, 0x99	; 153
+ 45e:	f0 e1       	ldi	r31, 0x10	; 16
+ 460:	31 97       	sbiw	r30, 0x01	; 1
+ 462:	f1 f7       	brne	.-4      	; 0x460 <__stack+0x1>
+ 464:	00 c0       	rjmp	.+0      	; 0x466 <__stack+0x7>
+ 466:	00 00       	nop
+ 468:	01 97       	sbiw	r24, 0x01	; 1
+	}
+}
+
+void palec5_off()
+{
+	for(int i=0;i<35;i++)
+ 46a:	81 f7       	brne	.-32     	; 0x44c <palec5_off+0x4>
+		PORTC |=0x10;
+		_delay_ms(2.2);
+		PORTC &=0xef;
+		_delay_ms(17); //19.4
+	}
+}
+ 46c:	08 95       	ret
+
+0000046e <polowa_reki_wlacz>:
+
+void polowa_reki_wlacz()
+{
+ 46e:	8a e0       	ldi	r24, 0x0A	; 10
+ 470:	90 e0       	ldi	r25, 0x00	; 0
+	for(int i=0;i<10;i++)
+	{
+		PORTC |=0xff;
+ 472:	2f ef       	ldi	r18, 0xFF	; 255
+ 474:	35 b3       	in	r19, 0x15	; 21
+ 476:	25 bb       	out	0x15, r18	; 21
+ 478:	a2 e1       	ldi	r26, 0x12	; 18
+ 47a:	b1 e0       	ldi	r27, 0x01	; 1
+ 47c:	11 97       	sbiw	r26, 0x01	; 1
+ 47e:	f1 f7       	brne	.-4      	; 0x47c <polowa_reki_wlacz+0xe>
+ 480:	00 c0       	rjmp	.+0      	; 0x482 <polowa_reki_wlacz+0x14>
+ 482:	00 00       	nop
+		_delay_ms(1.1);
+		PORTC &=0x00;
+ 484:	35 b3       	in	r19, 0x15	; 21
+ 486:	15 ba       	out	0x15, r1	; 21
+ 488:	e9 e9       	ldi	r30, 0x99	; 153
+ 48a:	f0 e1       	ldi	r31, 0x10	; 16
+ 48c:	31 97       	sbiw	r30, 0x01	; 1
+ 48e:	f1 f7       	brne	.-4      	; 0x48c <polowa_reki_wlacz+0x1e>
+ 490:	00 c0       	rjmp	.+0      	; 0x492 <polowa_reki_wlacz+0x24>
+ 492:	00 00       	nop
+ 494:	01 97       	sbiw	r24, 0x01	; 1
+	}
+}
+
+void polowa_reki_wlacz()
+{
+	for(int i=0;i<10;i++)
+ 496:	71 f7       	brne	.-36     	; 0x474 <polowa_reki_wlacz+0x6>
+ 498:	8f e3       	ldi	r24, 0x3F	; 63
+ 49a:	9d e0       	ldi	r25, 0x0D	; 13
+ 49c:	a3 e0       	ldi	r26, 0x03	; 3
+ 49e:	81 50       	subi	r24, 0x01	; 1
+ 4a0:	90 40       	sbci	r25, 0x00	; 0
+ 4a2:	a0 40       	sbci	r26, 0x00	; 0
+ 4a4:	e1 f7       	brne	.-8      	; 0x49e <polowa_reki_wlacz+0x30>
+ 4a6:	00 c0       	rjmp	.+0      	; 0x4a8 <polowa_reki_wlacz+0x3a>
+ 4a8:	00 00       	nop
+ 4aa:	89 e1       	ldi	r24, 0x19	; 25
+ 4ac:	90 e0       	ldi	r25, 0x00	; 0
+	
+	_delay_ms(1000);
+	
+	for(int i=0;i<25;i++)
+	{
+		PORTC |=0xff;
+ 4ae:	2f ef       	ldi	r18, 0xFF	; 255
+ 4b0:	35 b3       	in	r19, 0x15	; 21
+ 4b2:	25 bb       	out	0x15, r18	; 21
+ 4b4:	a2 e1       	ldi	r26, 0x12	; 18
+ 4b6:	b1 e0       	ldi	r27, 0x01	; 1
+ 4b8:	11 97       	sbiw	r26, 0x01	; 1
+ 4ba:	f1 f7       	brne	.-4      	; 0x4b8 <polowa_reki_wlacz+0x4a>
+ 4bc:	00 c0       	rjmp	.+0      	; 0x4be <polowa_reki_wlacz+0x50>
+ 4be:	00 00       	nop
+		_delay_ms(1.1);
+		PORTC &=0x00;
+ 4c0:	35 b3       	in	r19, 0x15	; 21
+ 4c2:	15 ba       	out	0x15, r1	; 21
+ 4c4:	e9 e9       	ldi	r30, 0x99	; 153
+ 4c6:	f0 e1       	ldi	r31, 0x10	; 16
+ 4c8:	31 97       	sbiw	r30, 0x01	; 1
+ 4ca:	f1 f7       	brne	.-4      	; 0x4c8 <polowa_reki_wlacz+0x5a>
+ 4cc:	00 c0       	rjmp	.+0      	; 0x4ce <polowa_reki_wlacz+0x60>
+ 4ce:	00 00       	nop
+ 4d0:	01 97       	sbiw	r24, 0x01	; 1
+		_delay_ms(17); //19.4
+	}
+	
+	_delay_ms(1000);
+	
+	for(int i=0;i<25;i++)
+ 4d2:	71 f7       	brne	.-36     	; 0x4b0 <polowa_reki_wlacz+0x42>
+		_delay_ms(17); //19.4
+	}
+	
+		//_delay_ms(2000);
+		//cala_reka__wylacz();
+}
+ 4d4:	08 95       	ret
+
+000004d6 <polowa_reki_1_wlacz>:
+
+void polowa_reki_1_wlacz()
+{
+ 4d6:	85 e0       	ldi	r24, 0x05	; 5
+ 4d8:	90 e0       	ldi	r25, 0x00	; 0
+	
+	for(int i=0;i<5;i++)
+	{
+		PORTC |=0x10;
+ 4da:	ac 9a       	sbi	0x15, 4	; 21
+ 4dc:	a2 e1       	ldi	r26, 0x12	; 18
+ 4de:	b1 e0       	ldi	r27, 0x01	; 1
+ 4e0:	11 97       	sbiw	r26, 0x01	; 1
+ 4e2:	f1 f7       	brne	.-4      	; 0x4e0 <polowa_reki_1_wlacz+0xa>
+ 4e4:	00 c0       	rjmp	.+0      	; 0x4e6 <polowa_reki_1_wlacz+0x10>
+ 4e6:	00 00       	nop
+		_delay_ms(1.1);
+		PORTC &=0xef;
+ 4e8:	ac 98       	cbi	0x15, 4	; 21
+ 4ea:	e9 e9       	ldi	r30, 0x99	; 153
+ 4ec:	f0 e1       	ldi	r31, 0x10	; 16
+ 4ee:	31 97       	sbiw	r30, 0x01	; 1
+ 4f0:	f1 f7       	brne	.-4      	; 0x4ee <polowa_reki_1_wlacz+0x18>
+ 4f2:	00 c0       	rjmp	.+0      	; 0x4f4 <polowa_reki_1_wlacz+0x1e>
+ 4f4:	00 00       	nop
+ 4f6:	01 97       	sbiw	r24, 0x01	; 1
+}
+
+void polowa_reki_1_wlacz()
+{
+	
+	for(int i=0;i<5;i++)
+ 4f8:	81 f7       	brne	.-32     	; 0x4da <polowa_reki_1_wlacz+0x4>
+ 4fa:	8a e0       	ldi	r24, 0x0A	; 10
+ 4fc:	90 e0       	ldi	r25, 0x00	; 0
+		_delay_ms(17); //19.4
+	}
+	
+	for(int i=0;i<10;i++)
+	{
+		PORTC |=0x08;
+ 4fe:	ab 9a       	sbi	0x15, 3	; 21
+ 500:	a2 e1       	ldi	r26, 0x12	; 18
+ 502:	b1 e0       	ldi	r27, 0x01	; 1
+ 504:	11 97       	sbiw	r26, 0x01	; 1
+ 506:	f1 f7       	brne	.-4      	; 0x504 <polowa_reki_1_wlacz+0x2e>
+ 508:	00 c0       	rjmp	.+0      	; 0x50a <polowa_reki_1_wlacz+0x34>
+ 50a:	00 00       	nop
+		_delay_ms(1.1);
+		PORTC &=0xf7;
+ 50c:	ab 98       	cbi	0x15, 3	; 21
+ 50e:	e9 e9       	ldi	r30, 0x99	; 153
+ 510:	f0 e1       	ldi	r31, 0x10	; 16
+ 512:	31 97       	sbiw	r30, 0x01	; 1
+ 514:	f1 f7       	brne	.-4      	; 0x512 <polowa_reki_1_wlacz+0x3c>
+ 516:	00 c0       	rjmp	.+0      	; 0x518 <polowa_reki_1_wlacz+0x42>
+ 518:	00 00       	nop
+ 51a:	01 97       	sbiw	r24, 0x01	; 1
+		_delay_ms(1.1);
+		PORTC &=0xef;
+		_delay_ms(17); //19.4
+	}
+	
+	for(int i=0;i<10;i++)
+ 51c:	81 f7       	brne	.-32     	; 0x4fe <polowa_reki_1_wlacz+0x28>
+ 51e:	8f e0       	ldi	r24, 0x0F	; 15
+ 520:	90 e0       	ldi	r25, 0x00	; 0
+		_delay_ms(17); //19.4
+	}
+	
+	for(int i=0;i<15;i++)
+	{
+		PORTC |=0x04;
+ 522:	aa 9a       	sbi	0x15, 2	; 21
+ 524:	a2 e1       	ldi	r26, 0x12	; 18
+ 526:	b1 e0       	ldi	r27, 0x01	; 1
+ 528:	11 97       	sbiw	r26, 0x01	; 1
+ 52a:	f1 f7       	brne	.-4      	; 0x528 <polowa_reki_1_wlacz+0x52>
+ 52c:	00 c0       	rjmp	.+0      	; 0x52e <polowa_reki_1_wlacz+0x58>
+ 52e:	00 00       	nop
+		_delay_ms(1.1);
+		PORTC &=0xfb;
+ 530:	aa 98       	cbi	0x15, 2	; 21
+ 532:	e9 e9       	ldi	r30, 0x99	; 153
+ 534:	f0 e1       	ldi	r31, 0x10	; 16
+ 536:	31 97       	sbiw	r30, 0x01	; 1
+ 538:	f1 f7       	brne	.-4      	; 0x536 <polowa_reki_1_wlacz+0x60>
+ 53a:	00 c0       	rjmp	.+0      	; 0x53c <polowa_reki_1_wlacz+0x66>
+ 53c:	00 00       	nop
+ 53e:	01 97       	sbiw	r24, 0x01	; 1
+		_delay_ms(1.1);
+		PORTC &=0xf7;
+		_delay_ms(17); //19.4
+	}
+	
+	for(int i=0;i<15;i++)
+ 540:	81 f7       	brne	.-32     	; 0x522 <polowa_reki_1_wlacz+0x4c>
+ 542:	84 e1       	ldi	r24, 0x14	; 20
+ 544:	90 e0       	ldi	r25, 0x00	; 0
+		_delay_ms(17); //19.4
+	}
+	
+	for(int i=0;i<20;i++)
+	{
+		PORTC |=0x02;
+ 546:	a9 9a       	sbi	0x15, 1	; 21
+ 548:	a2 e1       	ldi	r26, 0x12	; 18
+ 54a:	b1 e0       	ldi	r27, 0x01	; 1
+ 54c:	11 97       	sbiw	r26, 0x01	; 1
+ 54e:	f1 f7       	brne	.-4      	; 0x54c <polowa_reki_1_wlacz+0x76>
+ 550:	00 c0       	rjmp	.+0      	; 0x552 <polowa_reki_1_wlacz+0x7c>
+ 552:	00 00       	nop
+		_delay_ms(1.1);
+		PORTC &=0xfd;
+ 554:	a9 98       	cbi	0x15, 1	; 21
+ 556:	e9 e9       	ldi	r30, 0x99	; 153
+ 558:	f0 e1       	ldi	r31, 0x10	; 16
+ 55a:	31 97       	sbiw	r30, 0x01	; 1
+ 55c:	f1 f7       	brne	.-4      	; 0x55a <polowa_reki_1_wlacz+0x84>
+ 55e:	00 c0       	rjmp	.+0      	; 0x560 <polowa_reki_1_wlacz+0x8a>
+ 560:	00 00       	nop
+ 562:	01 97       	sbiw	r24, 0x01	; 1
+		_delay_ms(1.1);
+		PORTC &=0xfb;
+		_delay_ms(17); //19.4
+	}
+	
+	for(int i=0;i<20;i++)
+ 564:	81 f7       	brne	.-32     	; 0x546 <polowa_reki_1_wlacz+0x70>
+ 566:	89 e1       	ldi	r24, 0x19	; 25
+ 568:	90 e0       	ldi	r25, 0x00	; 0
+		_delay_ms(17); //19.4
+	}
+	
+	for(int i=0;i<25;i++)
+	{
+		PORTC |=0x01;
+ 56a:	a8 9a       	sbi	0x15, 0	; 21
+ 56c:	a2 e1       	ldi	r26, 0x12	; 18
+ 56e:	b1 e0       	ldi	r27, 0x01	; 1
+ 570:	11 97       	sbiw	r26, 0x01	; 1
+ 572:	f1 f7       	brne	.-4      	; 0x570 <polowa_reki_1_wlacz+0x9a>
+ 574:	00 c0       	rjmp	.+0      	; 0x576 <polowa_reki_1_wlacz+0xa0>
+ 576:	00 00       	nop
+		_delay_ms(1.1);
+		PORTC &=0xfe;
+ 578:	a8 98       	cbi	0x15, 0	; 21
+ 57a:	e9 e9       	ldi	r30, 0x99	; 153
+ 57c:	f0 e1       	ldi	r31, 0x10	; 16
+ 57e:	31 97       	sbiw	r30, 0x01	; 1
+ 580:	f1 f7       	brne	.-4      	; 0x57e <polowa_reki_1_wlacz+0xa8>
+ 582:	00 c0       	rjmp	.+0      	; 0x584 <polowa_reki_1_wlacz+0xae>
+ 584:	00 00       	nop
+ 586:	01 97       	sbiw	r24, 0x01	; 1
+		_delay_ms(1.1);
+		PORTC &=0xfd;
+		_delay_ms(17); //19.4
+	}
+	
+	for(int i=0;i<25;i++)
+ 588:	81 f7       	brne	.-32     	; 0x56a <polowa_reki_1_wlacz+0x94>
+ 58a:	8f e3       	ldi	r24, 0x3F	; 63
+ 58c:	9d e0       	ldi	r25, 0x0D	; 13
+ 58e:	a3 e0       	ldi	r26, 0x03	; 3
+ 590:	81 50       	subi	r24, 0x01	; 1
+ 592:	90 40       	sbci	r25, 0x00	; 0
+ 594:	a0 40       	sbci	r26, 0x00	; 0
+ 596:	e1 f7       	brne	.-8      	; 0x590 <polowa_reki_1_wlacz+0xba>
+ 598:	00 c0       	rjmp	.+0      	; 0x59a <polowa_reki_1_wlacz+0xc4>
+ 59a:	00 00       	nop
+ 59c:	8e e1       	ldi	r24, 0x1E	; 30
+ 59e:	90 e0       	ldi	r25, 0x00	; 0
+	
+	_delay_ms(1000);
+	
+	for(int i=0;i<30;i++)
+	{
+		PORTC |=0xff;
+ 5a0:	2f ef       	ldi	r18, 0xFF	; 255
+ 5a2:	35 b3       	in	r19, 0x15	; 21
+ 5a4:	25 bb       	out	0x15, r18	; 21
+ 5a6:	a2 e1       	ldi	r26, 0x12	; 18
+ 5a8:	b1 e0       	ldi	r27, 0x01	; 1
+ 5aa:	11 97       	sbiw	r26, 0x01	; 1
+ 5ac:	f1 f7       	brne	.-4      	; 0x5aa <polowa_reki_1_wlacz+0xd4>
+ 5ae:	00 c0       	rjmp	.+0      	; 0x5b0 <polowa_reki_1_wlacz+0xda>
+ 5b0:	00 00       	nop
+		_delay_ms(1.1);
+		PORTC &=0x00;
+ 5b2:	35 b3       	in	r19, 0x15	; 21
+ 5b4:	15 ba       	out	0x15, r1	; 21
+ 5b6:	e9 e9       	ldi	r30, 0x99	; 153
+ 5b8:	f0 e1       	ldi	r31, 0x10	; 16
+ 5ba:	31 97       	sbiw	r30, 0x01	; 1
+ 5bc:	f1 f7       	brne	.-4      	; 0x5ba <polowa_reki_1_wlacz+0xe4>
+ 5be:	00 c0       	rjmp	.+0      	; 0x5c0 <polowa_reki_1_wlacz+0xea>
+ 5c0:	00 00       	nop
+ 5c2:	01 97       	sbiw	r24, 0x01	; 1
+	}
+	
+	
+	_delay_ms(1000);
+	
+	for(int i=0;i<30;i++)
+ 5c4:	71 f7       	brne	.-36     	; 0x5a2 <polowa_reki_1_wlacz+0xcc>
+	}
+	
+	
+	
+	
+}
+ 5c6:	08 95       	ret
+
+000005c8 <fack_on>:
+void fack_on()
+{
+ 5c8:	83 e2       	ldi	r24, 0x23	; 35
+ 5ca:	90 e0       	ldi	r25, 0x00	; 0
+	for(int i=0;i<35;i++)
+	{
+		PORTC |=0x01;
+ 5cc:	a8 9a       	sbi	0x15, 0	; 21
+ 5ce:	a9 ef       	ldi	r26, 0xF9	; 249
+ 5d0:	b0 e0       	ldi	r27, 0x00	; 0
+ 5d2:	11 97       	sbiw	r26, 0x01	; 1
+ 5d4:	f1 f7       	brne	.-4      	; 0x5d2 <fack_on+0xa>
+ 5d6:	00 c0       	rjmp	.+0      	; 0x5d8 <fack_on+0x10>
+ 5d8:	00 00       	nop
+		_delay_ms(1);
+		PORTC &=0xfe;
+ 5da:	a8 98       	cbi	0x15, 0	; 21
+ 5dc:	e9 e9       	ldi	r30, 0x99	; 153
+ 5de:	f0 e1       	ldi	r31, 0x10	; 16
+ 5e0:	31 97       	sbiw	r30, 0x01	; 1
+ 5e2:	f1 f7       	brne	.-4      	; 0x5e0 <fack_on+0x18>
+ 5e4:	00 c0       	rjmp	.+0      	; 0x5e6 <fack_on+0x1e>
+ 5e6:	00 00       	nop
+ 5e8:	01 97       	sbiw	r24, 0x01	; 1
+	
+	
+}
+void fack_on()
+{
+	for(int i=0;i<35;i++)
+ 5ea:	81 f7       	brne	.-32     	; 0x5cc <fack_on+0x4>
+ 5ec:	83 e2       	ldi	r24, 0x23	; 35
+ 5ee:	90 e0       	ldi	r25, 0x00	; 0
+		_delay_ms(17); //19.4
+	}
+	
+	for(int i=0;i<35;i++)
+	{
+		PORTC |=0x02;
+ 5f0:	a9 9a       	sbi	0x15, 1	; 21
+ 5f2:	a9 ef       	ldi	r26, 0xF9	; 249
+ 5f4:	b0 e0       	ldi	r27, 0x00	; 0
+ 5f6:	11 97       	sbiw	r26, 0x01	; 1
+ 5f8:	f1 f7       	brne	.-4      	; 0x5f6 <fack_on+0x2e>
+ 5fa:	00 c0       	rjmp	.+0      	; 0x5fc <fack_on+0x34>
+ 5fc:	00 00       	nop
+		_delay_ms(1);
+		PORTC &=0xfd;
+ 5fe:	a9 98       	cbi	0x15, 1	; 21
+ 600:	e9 e9       	ldi	r30, 0x99	; 153
+ 602:	f0 e1       	ldi	r31, 0x10	; 16
+ 604:	31 97       	sbiw	r30, 0x01	; 1
+ 606:	f1 f7       	brne	.-4      	; 0x604 <fack_on+0x3c>
+ 608:	00 c0       	rjmp	.+0      	; 0x60a <fack_on+0x42>
+ 60a:	00 00       	nop
+ 60c:	01 97       	sbiw	r24, 0x01	; 1
+		_delay_ms(1);
+		PORTC &=0xfe;
+		_delay_ms(17); //19.4
+	}
+	
+	for(int i=0;i<35;i++)
+ 60e:	81 f7       	brne	.-32     	; 0x5f0 <fack_on+0x28>
+ 610:	83 e2       	ldi	r24, 0x23	; 35
+ 612:	90 e0       	ldi	r25, 0x00	; 0
+		_delay_ms(17); //19.4
+	}
+	
+	for(int i=0;i<35;i++)
+	{
+		PORTC |=0x08;
+ 614:	ab 9a       	sbi	0x15, 3	; 21
+ 616:	a9 ef       	ldi	r26, 0xF9	; 249
+ 618:	b0 e0       	ldi	r27, 0x00	; 0
+ 61a:	11 97       	sbiw	r26, 0x01	; 1
+ 61c:	f1 f7       	brne	.-4      	; 0x61a <fack_on+0x52>
+ 61e:	00 c0       	rjmp	.+0      	; 0x620 <fack_on+0x58>
+ 620:	00 00       	nop
+		_delay_ms(1);
+		PORTC &=0xf7;
+ 622:	ab 98       	cbi	0x15, 3	; 21
+ 624:	e9 e9       	ldi	r30, 0x99	; 153
+ 626:	f0 e1       	ldi	r31, 0x10	; 16
+ 628:	31 97       	sbiw	r30, 0x01	; 1
+ 62a:	f1 f7       	brne	.-4      	; 0x628 <fack_on+0x60>
+ 62c:	00 c0       	rjmp	.+0      	; 0x62e <fack_on+0x66>
+ 62e:	00 00       	nop
+ 630:	01 97       	sbiw	r24, 0x01	; 1
+		_delay_ms(1);
+		PORTC &=0xfd;
+		_delay_ms(17); //19.4
+	}
+	
+	for(int i=0;i<35;i++)
+ 632:	81 f7       	brne	.-32     	; 0x614 <fack_on+0x4c>
+ 634:	83 e2       	ldi	r24, 0x23	; 35
+ 636:	90 e0       	ldi	r25, 0x00	; 0
+		_delay_ms(17); //19.4
+	}
+	
+	for(int i=0;i<35;i++)
+	{
+		PORTC |=0x10;
+ 638:	ac 9a       	sbi	0x15, 4	; 21
+ 63a:	a9 ef       	ldi	r26, 0xF9	; 249
+ 63c:	b0 e0       	ldi	r27, 0x00	; 0
+ 63e:	11 97       	sbiw	r26, 0x01	; 1
+ 640:	f1 f7       	brne	.-4      	; 0x63e <fack_on+0x76>
+ 642:	00 c0       	rjmp	.+0      	; 0x644 <fack_on+0x7c>
+ 644:	00 00       	nop
+		_delay_ms(1);
+		PORTC &=0xef;
+ 646:	ac 98       	cbi	0x15, 4	; 21
+ 648:	e9 e9       	ldi	r30, 0x99	; 153
+ 64a:	f0 e1       	ldi	r31, 0x10	; 16
+ 64c:	31 97       	sbiw	r30, 0x01	; 1
+ 64e:	f1 f7       	brne	.-4      	; 0x64c <fack_on+0x84>
+ 650:	00 c0       	rjmp	.+0      	; 0x652 <fack_on+0x8a>
+ 652:	00 00       	nop
+ 654:	01 97       	sbiw	r24, 0x01	; 1
+		_delay_ms(1);
+		PORTC &=0xf7;
+		_delay_ms(17); //19.4
+	}
+	
+	for(int i=0;i<35;i++)
+ 656:	81 f7       	brne	.-32     	; 0x638 <fack_on+0x70>
+ 658:	8f e7       	ldi	r24, 0x7F	; 127
+ 65a:	94 e8       	ldi	r25, 0x84	; 132
+ 65c:	ae e1       	ldi	r26, 0x1E	; 30
+ 65e:	81 50       	subi	r24, 0x01	; 1
+ 660:	90 40       	sbci	r25, 0x00	; 0
+ 662:	a0 40       	sbci	r26, 0x00	; 0
+ 664:	e1 f7       	brne	.-8      	; 0x65e <fack_on+0x96>
+ 666:	00 c0       	rjmp	.+0      	; 0x668 <fack_on+0xa0>
+ 668:	00 00       	nop
+		PORTC &=0xef;
+		_delay_ms(17); //19.4
+	}
+	
+	_delay_ms(10000);
+	cala_reka__wylacz();
+ 66a:	2d de       	rcall	.-934    	; 0x2c6 <cala_reka__wylacz>
+	
+}
+ 66c:	08 95       	ret
+
+0000066e <__vector_1>:
+void ster_drugi();
+
+//Obs³uga przerwañ
+
+ISR(INT0_vect)
+{
+ 66e:	1f 92       	push	r1
+ 670:	0f 92       	push	r0
+ 672:	0f b6       	in	r0, 0x3f	; 63
+ 674:	0f 92       	push	r0
+ 676:	11 24       	eor	r1, r1
+ 678:	2f 93       	push	r18
+ 67a:	3f 93       	push	r19
+ 67c:	4f 93       	push	r20
+ 67e:	5f 93       	push	r21
+ 680:	6f 93       	push	r22
+ 682:	7f 93       	push	r23
+ 684:	8f 93       	push	r24
+ 686:	9f 93       	push	r25
+ 688:	af 93       	push	r26
+ 68a:	bf 93       	push	r27
+ 68c:	ef 93       	push	r30
+ 68e:	ff 93       	push	r31
+	cli();
+ 690:	f8 94       	cli
+	
+	fack_on();
+ 692:	9a df       	rcall	.-204    	; 0x5c8 <fack_on>
+		_delay_ms(1.1);
+		PORTC &=0x00;
+		_delay_ms(17); //19.4
+	}
+	*/
+	sei();
+ 694:	78 94       	sei
+	
+}
+ 696:	ff 91       	pop	r31
+ 698:	ef 91       	pop	r30
+ 69a:	bf 91       	pop	r27
+ 69c:	af 91       	pop	r26
+ 69e:	9f 91       	pop	r25
+ 6a0:	8f 91       	pop	r24
+ 6a2:	7f 91       	pop	r23
+ 6a4:	6f 91       	pop	r22
+ 6a6:	5f 91       	pop	r21
+ 6a8:	4f 91       	pop	r20
+ 6aa:	3f 91       	pop	r19
+ 6ac:	2f 91       	pop	r18
+ 6ae:	0f 90       	pop	r0
+ 6b0:	0f be       	out	0x3f, r0	; 63
+ 6b2:	0f 90       	pop	r0
+ 6b4:	1f 90       	pop	r1
+ 6b6:	18 95       	reti
+
+000006b8 <kalibracja>:
+	cala_reka__wylacz();
+	
+}
+
+void kalibracja()
+{
+ 6b8:	cf 93       	push	r28
+ 6ba:	df 93       	push	r29
+		gora_prawo_pelnokr(tster_pelnokr_gora_dol_oba,400,0);
+ 6bc:	c8 e6       	ldi	r28, 0x68	; 104
+ 6be:	d0 e0       	ldi	r29, 0x00	; 0
+ 6c0:	ce 01       	movw	r24, r28
+ 6c2:	60 e9       	ldi	r22, 0x90	; 144
+ 6c4:	71 e0       	ldi	r23, 0x01	; 1
+ 6c6:	40 e0       	ldi	r20, 0x00	; 0
+ 6c8:	70 dd       	rcall	.-1312   	; 0x1aa <gora_prawo_pelnokr>
+		dol_lewo_pelnokr(tster_pelnokr_gora_dol_oba,150,0);
+ 6ca:	ce 01       	movw	r24, r28
+ 6cc:	66 e9       	ldi	r22, 0x96	; 150
+ 6ce:	70 e0       	ldi	r23, 0x00	; 0
+ 6d0:	40 e0       	ldi	r20, 0x00	; 0
+ 6d2:	a1 dd       	rcall	.-1214   	; 0x216 <dol_lewo_pelnokr>
+		gora_prawo_pelnokr(tster_pelnokr_prawo_lewo,916,0);
+ 6d4:	c8 e7       	ldi	r28, 0x78	; 120
+ 6d6:	d0 e0       	ldi	r29, 0x00	; 0
+ 6d8:	ce 01       	movw	r24, r28
+ 6da:	64 e9       	ldi	r22, 0x94	; 148
+ 6dc:	73 e0       	ldi	r23, 0x03	; 3
+ 6de:	40 e0       	ldi	r20, 0x00	; 0
+ 6e0:	64 dd       	rcall	.-1336   	; 0x1aa <gora_prawo_pelnokr>
+		dol_lewo_pelnokr(tster_pelnokr_prawo_lewo,780,0);//380
+ 6e2:	ce 01       	movw	r24, r28
+ 6e4:	6c e0       	ldi	r22, 0x0C	; 12
+ 6e6:	73 e0       	ldi	r23, 0x03	; 3
+ 6e8:	40 e0       	ldi	r20, 0x00	; 0
+ 6ea:	95 dd       	rcall	.-1238   	; 0x216 <dol_lewo_pelnokr>
+		
+
+}
+ 6ec:	df 91       	pop	r29
+ 6ee:	cf 91       	pop	r28
+ 6f0:	08 95       	ret
+
+000006f2 <reka_o>:
+
+void reka_o()
+{	
+ 6f2:	83 e2       	ldi	r24, 0x23	; 35
+ 6f4:	90 e0       	ldi	r25, 0x00	; 0
+	
+	for(int i=0;i<35;i++)
+	{
+		PORTC |=0x02;
+ 6f6:	a9 9a       	sbi	0x15, 1	; 21
+ 6f8:	e2 e1       	ldi	r30, 0x12	; 18
+ 6fa:	f1 e0       	ldi	r31, 0x01	; 1
+ 6fc:	31 97       	sbiw	r30, 0x01	; 1
+ 6fe:	f1 f7       	brne	.-4      	; 0x6fc <reka_o+0xa>
+ 700:	00 c0       	rjmp	.+0      	; 0x702 <reka_o+0x10>
+ 702:	00 00       	nop
+		_delay_ms(1.1);
+		PORTC &=0xfd;
+ 704:	a9 98       	cbi	0x15, 1	; 21
+ 706:	e9 e9       	ldi	r30, 0x99	; 153
+ 708:	f0 e1       	ldi	r31, 0x10	; 16
+ 70a:	31 97       	sbiw	r30, 0x01	; 1
+ 70c:	f1 f7       	brne	.-4      	; 0x70a <reka_o+0x18>
+ 70e:	00 c0       	rjmp	.+0      	; 0x710 <reka_o+0x1e>
+ 710:	00 00       	nop
+ 712:	01 97       	sbiw	r24, 0x01	; 1
+}
+
+void reka_o()
+{	
+	
+	for(int i=0;i<35;i++)
+ 714:	81 f7       	brne	.-32     	; 0x6f6 <reka_o+0x4>
+ 716:	87 e0       	ldi	r24, 0x07	; 7
+ 718:	90 e0       	ldi	r25, 0x00	; 0
+	}
+	
+	
+	for(int i=0;i<7;i++)
+	{
+		PORTC |=0x04;
+ 71a:	aa 9a       	sbi	0x15, 2	; 21
+ 71c:	e2 e1       	ldi	r30, 0x12	; 18
+ 71e:	f1 e0       	ldi	r31, 0x01	; 1
+ 720:	31 97       	sbiw	r30, 0x01	; 1
+ 722:	f1 f7       	brne	.-4      	; 0x720 <reka_o+0x2e>
+ 724:	00 c0       	rjmp	.+0      	; 0x726 <reka_o+0x34>
+ 726:	00 00       	nop
+		_delay_ms(1.1);
+		PORTC &=0xfb;
+ 728:	aa 98       	cbi	0x15, 2	; 21
+ 72a:	e9 e9       	ldi	r30, 0x99	; 153
+ 72c:	f0 e1       	ldi	r31, 0x10	; 16
+ 72e:	31 97       	sbiw	r30, 0x01	; 1
+ 730:	f1 f7       	brne	.-4      	; 0x72e <reka_o+0x3c>
+ 732:	00 c0       	rjmp	.+0      	; 0x734 <reka_o+0x42>
+ 734:	00 00       	nop
+ 736:	01 97       	sbiw	r24, 0x01	; 1
+		PORTC &=0xfd;
+		_delay_ms(17); //19.4
+	}
+	
+	
+	for(int i=0;i<7;i++)
+ 738:	81 f7       	brne	.-32     	; 0x71a <reka_o+0x28>
+ 73a:	84 e0       	ldi	r24, 0x04	; 4
+ 73c:	90 e0       	ldi	r25, 0x00	; 0
+		PORTC &=0xfb;
+		_delay_ms(17); //19.4
+	}
+	for(int i=0;i<4;i++)
+	{
+		PORTC |=0x08;
+ 73e:	ab 9a       	sbi	0x15, 3	; 21
+ 740:	e2 e1       	ldi	r30, 0x12	; 18
+ 742:	f1 e0       	ldi	r31, 0x01	; 1
+ 744:	31 97       	sbiw	r30, 0x01	; 1
+ 746:	f1 f7       	brne	.-4      	; 0x744 <reka_o+0x52>
+ 748:	00 c0       	rjmp	.+0      	; 0x74a <reka_o+0x58>
+ 74a:	00 00       	nop
+		_delay_ms(1.1);
+		PORTC &=0xf7;
+ 74c:	ab 98       	cbi	0x15, 3	; 21
+ 74e:	e9 e9       	ldi	r30, 0x99	; 153
+ 750:	f0 e1       	ldi	r31, 0x10	; 16
+ 752:	31 97       	sbiw	r30, 0x01	; 1
+ 754:	f1 f7       	brne	.-4      	; 0x752 <reka_o+0x60>
+ 756:	00 c0       	rjmp	.+0      	; 0x758 <reka_o+0x66>
+ 758:	00 00       	nop
+ 75a:	01 97       	sbiw	r24, 0x01	; 1
+		PORTC |=0x04;
+		_delay_ms(1.1);
+		PORTC &=0xfb;
+		_delay_ms(17); //19.4
+	}
+	for(int i=0;i<4;i++)
+ 75c:	81 f7       	brne	.-32     	; 0x73e <reka_o+0x4c>
+		_delay_ms(17); //19.4
+	}
+	
+	for(int i=0;i<2;i++)
+	{
+		PORTC |=0x10;
+ 75e:	ac 9a       	sbi	0x15, 4	; 21
+ 760:	82 e1       	ldi	r24, 0x12	; 18
+ 762:	91 e0       	ldi	r25, 0x01	; 1
+ 764:	01 97       	sbiw	r24, 0x01	; 1
+ 766:	f1 f7       	brne	.-4      	; 0x764 <reka_o+0x72>
+ 768:	00 c0       	rjmp	.+0      	; 0x76a <reka_o+0x78>
+ 76a:	00 00       	nop
+		_delay_ms(1.1);
+		PORTC &=0xef;
+ 76c:	ac 98       	cbi	0x15, 4	; 21
+ 76e:	e9 e9       	ldi	r30, 0x99	; 153
+ 770:	f0 e1       	ldi	r31, 0x10	; 16
+ 772:	31 97       	sbiw	r30, 0x01	; 1
+ 774:	f1 f7       	brne	.-4      	; 0x772 <reka_o+0x80>
+ 776:	00 c0       	rjmp	.+0      	; 0x778 <reka_o+0x86>
+ 778:	00 00       	nop
+		_delay_ms(17); //19.4
+	}
+	
+	for(int i=0;i<2;i++)
+	{
+		PORTC |=0x10;
+ 77a:	ac 9a       	sbi	0x15, 4	; 21
+ 77c:	82 e1       	ldi	r24, 0x12	; 18
+ 77e:	91 e0       	ldi	r25, 0x01	; 1
+ 780:	01 97       	sbiw	r24, 0x01	; 1
+ 782:	f1 f7       	brne	.-4      	; 0x780 <reka_o+0x8e>
+ 784:	00 c0       	rjmp	.+0      	; 0x786 <reka_o+0x94>
+ 786:	00 00       	nop
+		_delay_ms(1.1);
+		PORTC &=0xef;
+ 788:	ac 98       	cbi	0x15, 4	; 21
+ 78a:	e9 e9       	ldi	r30, 0x99	; 153
+ 78c:	f0 e1       	ldi	r31, 0x10	; 16
+ 78e:	31 97       	sbiw	r30, 0x01	; 1
+ 790:	f1 f7       	brne	.-4      	; 0x78e <reka_o+0x9c>
+ 792:	00 c0       	rjmp	.+0      	; 0x794 <reka_o+0xa2>
+ 794:	00 00       	nop
+		_delay_ms(17); //19.4
+	}
+	
+}
+ 796:	08 95       	ret
+
+00000798 <ster_pierwszy>:
+
+
+void ster_pierwszy()
+{
+ 798:	0f 93       	push	r16
+ 79a:	1f 93       	push	r17
+ 79c:	cf 93       	push	r28
+ 79e:	df 93       	push	r29
+	// pozycja poczatkowa gora dol 0, prawo lewo 0
+	
+	dol_lewo_pelnokr(tster_pelnokr_gora_dol_oba,120,0); // dol +120
+ 7a0:	08 e6       	ldi	r16, 0x68	; 104
+ 7a2:	10 e0       	ldi	r17, 0x00	; 0
+ 7a4:	c8 01       	movw	r24, r16
+ 7a6:	68 e7       	ldi	r22, 0x78	; 120
+ 7a8:	70 e0       	ldi	r23, 0x00	; 0
+ 7aa:	40 e0       	ldi	r20, 0x00	; 0
+ 7ac:	34 dd       	rcall	.-1432   	; 0x216 <dol_lewo_pelnokr>
+ 7ae:	8f e7       	ldi	r24, 0x7F	; 127
+ 7b0:	9a e1       	ldi	r25, 0x1A	; 26
+ 7b2:	a6 e0       	ldi	r26, 0x06	; 6
+ 7b4:	81 50       	subi	r24, 0x01	; 1
+ 7b6:	90 40       	sbci	r25, 0x00	; 0
+ 7b8:	a0 40       	sbci	r26, 0x00	; 0
+ 7ba:	e1 f7       	brne	.-8      	; 0x7b4 <ster_pierwszy+0x1c>
+ 7bc:	00 c0       	rjmp	.+0      	; 0x7be <ster_pierwszy+0x26>
+ 7be:	00 00       	nop
+	_delay_ms(2000);
+	gora_prawo_pelnokr(tster_pelnokr_prawo_lewo,250,0); //prawo -250 +250=0
+ 7c0:	c8 e7       	ldi	r28, 0x78	; 120
+ 7c2:	d0 e0       	ldi	r29, 0x00	; 0
+ 7c4:	ce 01       	movw	r24, r28
+ 7c6:	6a ef       	ldi	r22, 0xFA	; 250
+ 7c8:	70 e0       	ldi	r23, 0x00	; 0
+ 7ca:	40 e0       	ldi	r20, 0x00	; 0
+ 7cc:	ee dc       	rcall	.-1572   	; 0x1aa <gora_prawo_pelnokr>
+ 7ce:	8f e7       	ldi	r24, 0x7F	; 127
+ 7d0:	9a e1       	ldi	r25, 0x1A	; 26
+ 7d2:	a6 e0       	ldi	r26, 0x06	; 6
+ 7d4:	81 50       	subi	r24, 0x01	; 1
+ 7d6:	90 40       	sbci	r25, 0x00	; 0
+ 7d8:	a0 40       	sbci	r26, 0x00	; 0
+ 7da:	e1 f7       	brne	.-8      	; 0x7d4 <ster_pierwszy+0x3c>
+ 7dc:	00 c0       	rjmp	.+0      	; 0x7de <ster_pierwszy+0x46>
+ 7de:	00 00       	nop
+	
+	_delay_ms(2000);
+	//polowa_reki_wlacz();
+	reka_o();
+ 7e0:	88 df       	rcall	.-240    	; 0x6f2 <reka_o>
+ 7e2:	8f e7       	ldi	r24, 0x7F	; 127
+ 7e4:	9a e1       	ldi	r25, 0x1A	; 26
+ 7e6:	a6 e0       	ldi	r26, 0x06	; 6
+ 7e8:	81 50       	subi	r24, 0x01	; 1
+ 7ea:	90 40       	sbci	r25, 0x00	; 0
+ 7ec:	a0 40       	sbci	r26, 0x00	; 0
+ 7ee:	e1 f7       	brne	.-8      	; 0x7e8 <ster_pierwszy+0x50>
+ 7f0:	00 c0       	rjmp	.+0      	; 0x7f2 <ster_pierwszy+0x5a>
+ 7f2:	00 00       	nop
+	_delay_ms(2000);
+	
+	dol_lewo_pelnokr(tster_pelnokr_prawo_lewo,250,0);//lewo -250
+ 7f4:	ce 01       	movw	r24, r28
+ 7f6:	6a ef       	ldi	r22, 0xFA	; 250
+ 7f8:	70 e0       	ldi	r23, 0x00	; 0
+ 7fa:	40 e0       	ldi	r20, 0x00	; 0
+ 7fc:	0c dd       	rcall	.-1512   	; 0x216 <dol_lewo_pelnokr>
+ 7fe:	8f e7       	ldi	r24, 0x7F	; 127
+ 800:	9a e1       	ldi	r25, 0x1A	; 26
+ 802:	a6 e0       	ldi	r26, 0x06	; 6
+ 804:	81 50       	subi	r24, 0x01	; 1
+ 806:	90 40       	sbci	r25, 0x00	; 0
+ 808:	a0 40       	sbci	r26, 0x00	; 0
+ 80a:	e1 f7       	brne	.-8      	; 0x804 <ster_pierwszy+0x6c>
+ 80c:	00 c0       	rjmp	.+0      	; 0x80e <ster_pierwszy+0x76>
+ 80e:	00 00       	nop
+	_delay_ms(2000);
+	cala_reka__wylacz();
+ 810:	5a dd       	rcall	.-1356   	; 0x2c6 <cala_reka__wylacz>
+ 812:	8f e7       	ldi	r24, 0x7F	; 127
+ 814:	9a e1       	ldi	r25, 0x1A	; 26
+ 816:	a6 e0       	ldi	r26, 0x06	; 6
+ 818:	81 50       	subi	r24, 0x01	; 1
+ 81a:	90 40       	sbci	r25, 0x00	; 0
+ 81c:	a0 40       	sbci	r26, 0x00	; 0
+ 81e:	e1 f7       	brne	.-8      	; 0x818 <ster_pierwszy+0x80>
+ 820:	00 c0       	rjmp	.+0      	; 0x822 <ster_pierwszy+0x8a>
+ 822:	00 00       	nop
+	_delay_ms(2000);
+	
+	gora_prawo_pelnokr(tster_pelnokr_prawo_lewo,100,0); //prawo -250 +250=0
+ 824:	ce 01       	movw	r24, r28
+ 826:	64 e6       	ldi	r22, 0x64	; 100
+ 828:	70 e0       	ldi	r23, 0x00	; 0
+ 82a:	40 e0       	ldi	r20, 0x00	; 0
+ 82c:	be dc       	rcall	.-1668   	; 0x1aa <gora_prawo_pelnokr>
+	
+	dol_lewo_pelnokr(tster_pelnokr_prawo_lewo,115,0);
+ 82e:	ce 01       	movw	r24, r28
+ 830:	63 e7       	ldi	r22, 0x73	; 115
+ 832:	70 e0       	ldi	r23, 0x00	; 0
+ 834:	40 e0       	ldi	r20, 0x00	; 0
+ 836:	ef dc       	rcall	.-1570   	; 0x216 <dol_lewo_pelnokr>
+	
+	gora_prawo_pelnokr(tster_pelnokr_prawo_lewo,15,0); //prawo -250 +250=0
+ 838:	ce 01       	movw	r24, r28
+ 83a:	6f e0       	ldi	r22, 0x0F	; 15
+ 83c:	70 e0       	ldi	r23, 0x00	; 0
+ 83e:	40 e0       	ldi	r20, 0x00	; 0
+ 840:	b4 dc       	rcall	.-1688   	; 0x1aa <gora_prawo_pelnokr>
+ 842:	8f e7       	ldi	r24, 0x7F	; 127
+ 844:	9a e1       	ldi	r25, 0x1A	; 26
+ 846:	a6 e0       	ldi	r26, 0x06	; 6
+ 848:	81 50       	subi	r24, 0x01	; 1
+ 84a:	90 40       	sbci	r25, 0x00	; 0
+ 84c:	a0 40       	sbci	r26, 0x00	; 0
+ 84e:	e1 f7       	brne	.-8      	; 0x848 <ster_pierwszy+0xb0>
+ 850:	00 c0       	rjmp	.+0      	; 0x852 <ster_pierwszy+0xba>
+ 852:	00 00       	nop
+	_delay_ms(2000);
+	gora_prawo_pelnokr(tster_pelnokr_gora_dol_oba,120,0);//gora+120 -120 = 0
+ 854:	c8 01       	movw	r24, r16
+ 856:	68 e7       	ldi	r22, 0x78	; 120
+ 858:	70 e0       	ldi	r23, 0x00	; 0
+ 85a:	40 e0       	ldi	r20, 0x00	; 0
+ 85c:	a6 dc       	rcall	.-1716   	; 0x1aa <gora_prawo_pelnokr>
+ 85e:	8f eb       	ldi	r24, 0xBF	; 191
+ 860:	97 e2       	ldi	r25, 0x27	; 39
+ 862:	a9 e0       	ldi	r26, 0x09	; 9
+ 864:	81 50       	subi	r24, 0x01	; 1
+ 866:	90 40       	sbci	r25, 0x00	; 0
+ 868:	a0 40       	sbci	r26, 0x00	; 0
+ 86a:	e1 f7       	brne	.-8      	; 0x864 <ster_pierwszy+0xcc>
+ 86c:	00 c0       	rjmp	.+0      	; 0x86e <ster_pierwszy+0xd6>
+ 86e:	00 00       	nop
+	_delay_ms(3000);
+	
+	// pozycja poczatkowa gora dol 0, prawo lewo 0
+	
+	dol_lewo_pelnokr(tster_pelnokr_gora_dol,150,0);
+ 870:	80 e7       	ldi	r24, 0x70	; 112
+ 872:	90 e0       	ldi	r25, 0x00	; 0
+ 874:	66 e9       	ldi	r22, 0x96	; 150
+ 876:	70 e0       	ldi	r23, 0x00	; 0
+ 878:	40 e0       	ldi	r20, 0x00	; 0
+ 87a:	cd dc       	rcall	.-1638   	; 0x216 <dol_lewo_pelnokr>
+	gora_prawo_pelnokr(tster_pelnokr_prawo_lewo,100,0);
+ 87c:	ce 01       	movw	r24, r28
+ 87e:	64 e6       	ldi	r22, 0x64	; 100
+ 880:	70 e0       	ldi	r23, 0x00	; 0
+ 882:	40 e0       	ldi	r20, 0x00	; 0
+ 884:	92 dc       	rcall	.-1756   	; 0x1aa <gora_prawo_pelnokr>
+ 886:	8f e7       	ldi	r24, 0x7F	; 127
+ 888:	9a e1       	ldi	r25, 0x1A	; 26
+ 88a:	a6 e0       	ldi	r26, 0x06	; 6
+ 88c:	81 50       	subi	r24, 0x01	; 1
+ 88e:	90 40       	sbci	r25, 0x00	; 0
+ 890:	a0 40       	sbci	r26, 0x00	; 0
+ 892:	e1 f7       	brne	.-8      	; 0x88c <ster_pierwszy+0xf4>
+ 894:	00 c0       	rjmp	.+0      	; 0x896 <ster_pierwszy+0xfe>
+ 896:	00 00       	nop
+	_delay_ms(2000);
+	gora_prawo_polkr(tster_polkr_gora_dol,150,0);
+ 898:	80 e9       	ldi	r24, 0x90	; 144
+ 89a:	90 e0       	ldi	r25, 0x00	; 0
+ 89c:	66 e9       	ldi	r22, 0x96	; 150
+ 89e:	70 e0       	ldi	r23, 0x00	; 0
+ 8a0:	40 e0       	ldi	r20, 0x00	; 0
+ 8a2:	0a dc       	rcall	.-2028   	; 0xb8 <gora_prawo_polkr>
+	dol_lewo_polkr(tster_polkr_prawo_lewo,100,0);
+ 8a4:	80 ea       	ldi	r24, 0xA0	; 160
+ 8a6:	90 e0       	ldi	r25, 0x00	; 0
+ 8a8:	64 e6       	ldi	r22, 0x64	; 100
+ 8aa:	70 e0       	ldi	r23, 0x00	; 0
+ 8ac:	40 e0       	ldi	r20, 0x00	; 0
+ 8ae:	3a dc       	rcall	.-1932   	; 0x124 <dol_lewo_polkr>
+ 8b0:	8f e7       	ldi	r24, 0x7F	; 127
+ 8b2:	9a e1       	ldi	r25, 0x1A	; 26
+ 8b4:	a6 e0       	ldi	r26, 0x06	; 6
+ 8b6:	81 50       	subi	r24, 0x01	; 1
+ 8b8:	90 40       	sbci	r25, 0x00	; 0
+ 8ba:	a0 40       	sbci	r26, 0x00	; 0
+ 8bc:	e1 f7       	brne	.-8      	; 0x8b6 <ster_pierwszy+0x11e>
+ 8be:	00 c0       	rjmp	.+0      	; 0x8c0 <ster_pierwszy+0x128>
+ 8c0:	00 00       	nop
+	_delay_ms(2000);
+	
+	dol_lewo_pelnokr(tster_pelnokr_gora_dol_oba,150,0);
+ 8c2:	c8 01       	movw	r24, r16
+ 8c4:	66 e9       	ldi	r22, 0x96	; 150
+ 8c6:	70 e0       	ldi	r23, 0x00	; 0
+ 8c8:	40 e0       	ldi	r20, 0x00	; 0
+ 8ca:	a5 dc       	rcall	.-1718   	; 0x216 <dol_lewo_pelnokr>
+ 8cc:	8f e7       	ldi	r24, 0x7F	; 127
+ 8ce:	9a e1       	ldi	r25, 0x1A	; 26
+ 8d0:	a6 e0       	ldi	r26, 0x06	; 6
+ 8d2:	81 50       	subi	r24, 0x01	; 1
+ 8d4:	90 40       	sbci	r25, 0x00	; 0
+ 8d6:	a0 40       	sbci	r26, 0x00	; 0
+ 8d8:	e1 f7       	brne	.-8      	; 0x8d2 <ster_pierwszy+0x13a>
+ 8da:	00 c0       	rjmp	.+0      	; 0x8dc <ster_pierwszy+0x144>
+ 8dc:	00 00       	nop
+	_delay_ms(2000);
+	gora_prawo_pelnokr(tster_pelnokr_prawo_lewo,500,0);
+ 8de:	ce 01       	movw	r24, r28
+ 8e0:	64 ef       	ldi	r22, 0xF4	; 244
+ 8e2:	71 e0       	ldi	r23, 0x01	; 1
+ 8e4:	40 e0       	ldi	r20, 0x00	; 0
+ 8e6:	61 dc       	rcall	.-1854   	; 0x1aa <gora_prawo_pelnokr>
+ 8e8:	8f e7       	ldi	r24, 0x7F	; 127
+ 8ea:	9a e1       	ldi	r25, 0x1A	; 26
+ 8ec:	a6 e0       	ldi	r26, 0x06	; 6
+ 8ee:	81 50       	subi	r24, 0x01	; 1
+ 8f0:	90 40       	sbci	r25, 0x00	; 0
+ 8f2:	a0 40       	sbci	r26, 0x00	; 0
+ 8f4:	e1 f7       	brne	.-8      	; 0x8ee <ster_pierwszy+0x156>
+ 8f6:	00 c0       	rjmp	.+0      	; 0x8f8 <ster_pierwszy+0x160>
+ 8f8:	00 00       	nop
+	_delay_ms(2000);
+	polowa_reki_1_wlacz();
+ 8fa:	ed dd       	rcall	.-1062   	; 0x4d6 <polowa_reki_1_wlacz>
+	gora_prawo_pelnokr(tster_pelnokr_gora_dol_oba,150,0);
+ 8fc:	c8 01       	movw	r24, r16
+ 8fe:	66 e9       	ldi	r22, 0x96	; 150
+ 900:	70 e0       	ldi	r23, 0x00	; 0
+ 902:	40 e0       	ldi	r20, 0x00	; 0
+ 904:	52 dc       	rcall	.-1884   	; 0x1aa <gora_prawo_pelnokr>
+	cala_reka__wylacz();
+ 906:	df dc       	rcall	.-1602   	; 0x2c6 <cala_reka__wylacz>
+ 908:	8f e7       	ldi	r24, 0x7F	; 127
+ 90a:	9a e1       	ldi	r25, 0x1A	; 26
+ 90c:	a6 e0       	ldi	r26, 0x06	; 6
+ 90e:	81 50       	subi	r24, 0x01	; 1
+ 910:	90 40       	sbci	r25, 0x00	; 0
+ 912:	a0 40       	sbci	r26, 0x00	; 0
+ 914:	e1 f7       	brne	.-8      	; 0x90e <ster_pierwszy+0x176>
+ 916:	00 c0       	rjmp	.+0      	; 0x918 <ster_pierwszy+0x180>
+ 918:	00 00       	nop
+	_delay_ms(2000);
+	dol_lewo_pelnokr(tster_pelnokr_gora_dol_oba,150,0);
+ 91a:	c8 01       	movw	r24, r16
+ 91c:	66 e9       	ldi	r22, 0x96	; 150
+ 91e:	70 e0       	ldi	r23, 0x00	; 0
+ 920:	40 e0       	ldi	r20, 0x00	; 0
+ 922:	79 dc       	rcall	.-1806   	; 0x216 <dol_lewo_pelnokr>
+	dol_lewo_pelnokr(tster_pelnokr_prawo_lewo,500,0);
+ 924:	ce 01       	movw	r24, r28
+ 926:	64 ef       	ldi	r22, 0xF4	; 244
+ 928:	71 e0       	ldi	r23, 0x01	; 1
+ 92a:	40 e0       	ldi	r20, 0x00	; 0
+ 92c:	74 dc       	rcall	.-1816   	; 0x216 <dol_lewo_pelnokr>
+	gora_prawo_pelnokr(tster_pelnokr_gora_dol_oba,150,0);
+ 92e:	c8 01       	movw	r24, r16
+ 930:	66 e9       	ldi	r22, 0x96	; 150
+ 932:	70 e0       	ldi	r23, 0x00	; 0
+ 934:	40 e0       	ldi	r20, 0x00	; 0
+ 936:	39 dc       	rcall	.-1934   	; 0x1aa <gora_prawo_pelnokr>
+ 938:	8f eb       	ldi	r24, 0xBF	; 191
+ 93a:	97 e2       	ldi	r25, 0x27	; 39
+ 93c:	a9 e0       	ldi	r26, 0x09	; 9
+ 93e:	81 50       	subi	r24, 0x01	; 1
+ 940:	90 40       	sbci	r25, 0x00	; 0
+ 942:	a0 40       	sbci	r26, 0x00	; 0
+ 944:	e1 f7       	brne	.-8      	; 0x93e <ster_pierwszy+0x1a6>
+ 946:	00 c0       	rjmp	.+0      	; 0x948 <ster_pierwszy+0x1b0>
+ 948:	00 00       	nop
+	_delay_ms(3000);
+	
+	
+}
+ 94a:	df 91       	pop	r29
+ 94c:	cf 91       	pop	r28
+ 94e:	1f 91       	pop	r17
+ 950:	0f 91       	pop	r16
+ 952:	08 95       	ret
+
+00000954 <ster_drugi>:
+
+void ster_drugi()
+{
+ 954:	0f 93       	push	r16
+ 956:	1f 93       	push	r17
+ 958:	cf 93       	push	r28
+ 95a:	df 93       	push	r29
+	dol_lewo_pelnokr(tster_pelnokr_gora_dol,150,0);
+ 95c:	80 e7       	ldi	r24, 0x70	; 112
+ 95e:	90 e0       	ldi	r25, 0x00	; 0
+ 960:	66 e9       	ldi	r22, 0x96	; 150
+ 962:	70 e0       	ldi	r23, 0x00	; 0
+ 964:	40 e0       	ldi	r20, 0x00	; 0
+ 966:	57 dc       	rcall	.-1874   	; 0x216 <dol_lewo_pelnokr>
+	gora_prawo_pelnokr(tster_pelnokr_prawo_lewo,350,0);
+ 968:	88 e7       	ldi	r24, 0x78	; 120
+ 96a:	90 e0       	ldi	r25, 0x00	; 0
+ 96c:	6e e5       	ldi	r22, 0x5E	; 94
+ 96e:	71 e0       	ldi	r23, 0x01	; 1
+ 970:	40 e0       	ldi	r20, 0x00	; 0
+ 972:	1b dc       	rcall	.-1994   	; 0x1aa <gora_prawo_pelnokr>
+ 974:	8f e7       	ldi	r24, 0x7F	; 127
+ 976:	9a e1       	ldi	r25, 0x1A	; 26
+ 978:	a6 e0       	ldi	r26, 0x06	; 6
+ 97a:	81 50       	subi	r24, 0x01	; 1
+ 97c:	90 40       	sbci	r25, 0x00	; 0
+ 97e:	a0 40       	sbci	r26, 0x00	; 0
+ 980:	e1 f7       	brne	.-8      	; 0x97a <ster_drugi+0x26>
+ 982:	00 c0       	rjmp	.+0      	; 0x984 <ster_drugi+0x30>
+ 984:	00 00       	nop
+ 986:	8f e7       	ldi	r24, 0x7F	; 127
+ 988:	9a e1       	ldi	r25, 0x1A	; 26
+ 98a:	a6 e0       	ldi	r26, 0x06	; 6
+ 98c:	81 50       	subi	r24, 0x01	; 1
+ 98e:	90 40       	sbci	r25, 0x00	; 0
+ 990:	a0 40       	sbci	r26, 0x00	; 0
+ 992:	e1 f7       	brne	.-8      	; 0x98c <ster_drugi+0x38>
+ 994:	00 c0       	rjmp	.+0      	; 0x996 <ster_drugi+0x42>
+ 996:	00 00       	nop
+ 998:	85 e0       	ldi	r24, 0x05	; 5
+ 99a:	90 e0       	ldi	r25, 0x00	; 0
+	//
+	_delay_ms(2000);
+	
+	for(int i=0;i<5;i++)
+	{
+		PORTC |=0x10;
+ 99c:	ac 9a       	sbi	0x15, 4	; 21
+ 99e:	a2 e1       	ldi	r26, 0x12	; 18
+ 9a0:	b1 e0       	ldi	r27, 0x01	; 1
+ 9a2:	11 97       	sbiw	r26, 0x01	; 1
+ 9a4:	f1 f7       	brne	.-4      	; 0x9a2 <ster_drugi+0x4e>
+ 9a6:	00 c0       	rjmp	.+0      	; 0x9a8 <ster_drugi+0x54>
+ 9a8:	00 00       	nop
+		_delay_ms(1.1);
+		PORTC &=0xef;
+ 9aa:	ac 98       	cbi	0x15, 4	; 21
+ 9ac:	e9 e9       	ldi	r30, 0x99	; 153
+ 9ae:	f0 e1       	ldi	r31, 0x10	; 16
+ 9b0:	31 97       	sbiw	r30, 0x01	; 1
+ 9b2:	f1 f7       	brne	.-4      	; 0x9b0 <ster_drugi+0x5c>
+ 9b4:	00 c0       	rjmp	.+0      	; 0x9b6 <ster_drugi+0x62>
+ 9b6:	00 00       	nop
+ 9b8:	01 97       	sbiw	r24, 0x01	; 1
+	_delay_ms(2000);
+	
+	//
+	_delay_ms(2000);
+	
+	for(int i=0;i<5;i++)
+ 9ba:	81 f7       	brne	.-32     	; 0x99c <ster_drugi+0x48>
+ 9bc:	8a e0       	ldi	r24, 0x0A	; 10
+ 9be:	90 e0       	ldi	r25, 0x00	; 0
+		_delay_ms(17); //19.4
+	}
+	
+	for(int i=0;i<10;i++)
+	{
+		PORTC |=0x08;
+ 9c0:	ab 9a       	sbi	0x15, 3	; 21
+ 9c2:	a2 e1       	ldi	r26, 0x12	; 18
+ 9c4:	b1 e0       	ldi	r27, 0x01	; 1
+ 9c6:	11 97       	sbiw	r26, 0x01	; 1
+ 9c8:	f1 f7       	brne	.-4      	; 0x9c6 <ster_drugi+0x72>
+ 9ca:	00 c0       	rjmp	.+0      	; 0x9cc <ster_drugi+0x78>
+ 9cc:	00 00       	nop
+		_delay_ms(1.1);
+		PORTC &=0xf7;
+ 9ce:	ab 98       	cbi	0x15, 3	; 21
+ 9d0:	e9 e9       	ldi	r30, 0x99	; 153
+ 9d2:	f0 e1       	ldi	r31, 0x10	; 16
+ 9d4:	31 97       	sbiw	r30, 0x01	; 1
+ 9d6:	f1 f7       	brne	.-4      	; 0x9d4 <ster_drugi+0x80>
+ 9d8:	00 c0       	rjmp	.+0      	; 0x9da <ster_drugi+0x86>
+ 9da:	00 00       	nop
+ 9dc:	01 97       	sbiw	r24, 0x01	; 1
+		_delay_ms(1.1);
+		PORTC &=0xef;
+		_delay_ms(17); //19.4
+	}
+	
+	for(int i=0;i<10;i++)
+ 9de:	81 f7       	brne	.-32     	; 0x9c0 <ster_drugi+0x6c>
+ 9e0:	8f e0       	ldi	r24, 0x0F	; 15
+ 9e2:	90 e0       	ldi	r25, 0x00	; 0
+		_delay_ms(17); //19.4
+	}
+	
+	for(int i=0;i<15;i++)
+	{
+		PORTC |=0x04;
+ 9e4:	aa 9a       	sbi	0x15, 2	; 21
+ 9e6:	a2 e1       	ldi	r26, 0x12	; 18
+ 9e8:	b1 e0       	ldi	r27, 0x01	; 1
+ 9ea:	11 97       	sbiw	r26, 0x01	; 1
+ 9ec:	f1 f7       	brne	.-4      	; 0x9ea <ster_drugi+0x96>
+ 9ee:	00 c0       	rjmp	.+0      	; 0x9f0 <ster_drugi+0x9c>
+ 9f0:	00 00       	nop
+		_delay_ms(1.1);
+		PORTC &=0xfb;
+ 9f2:	aa 98       	cbi	0x15, 2	; 21
+ 9f4:	e9 e9       	ldi	r30, 0x99	; 153
+ 9f6:	f0 e1       	ldi	r31, 0x10	; 16
+ 9f8:	31 97       	sbiw	r30, 0x01	; 1
+ 9fa:	f1 f7       	brne	.-4      	; 0x9f8 <ster_drugi+0xa4>
+ 9fc:	00 c0       	rjmp	.+0      	; 0x9fe <ster_drugi+0xaa>
+ 9fe:	00 00       	nop
+ a00:	01 97       	sbiw	r24, 0x01	; 1
+		_delay_ms(1.1);
+		PORTC &=0xf7;
+		_delay_ms(17); //19.4
+	}
+	
+	for(int i=0;i<15;i++)
+ a02:	81 f7       	brne	.-32     	; 0x9e4 <ster_drugi+0x90>
+ a04:	84 e1       	ldi	r24, 0x14	; 20
+ a06:	90 e0       	ldi	r25, 0x00	; 0
+		_delay_ms(17); //19.4
+	}
+	
+	for(int i=0;i<20;i++)
+	{
+		PORTC |=0x02;
+ a08:	a9 9a       	sbi	0x15, 1	; 21
+ a0a:	a2 e1       	ldi	r26, 0x12	; 18
+ a0c:	b1 e0       	ldi	r27, 0x01	; 1
+ a0e:	11 97       	sbiw	r26, 0x01	; 1
+ a10:	f1 f7       	brne	.-4      	; 0xa0e <ster_drugi+0xba>
+ a12:	00 c0       	rjmp	.+0      	; 0xa14 <ster_drugi+0xc0>
+ a14:	00 00       	nop
+		_delay_ms(1.1);
+		PORTC &=0xfd;
+ a16:	a9 98       	cbi	0x15, 1	; 21
+ a18:	e9 e9       	ldi	r30, 0x99	; 153
+ a1a:	f0 e1       	ldi	r31, 0x10	; 16
+ a1c:	31 97       	sbiw	r30, 0x01	; 1
+ a1e:	f1 f7       	brne	.-4      	; 0xa1c <ster_drugi+0xc8>
+ a20:	00 c0       	rjmp	.+0      	; 0xa22 <ster_drugi+0xce>
+ a22:	00 00       	nop
+ a24:	01 97       	sbiw	r24, 0x01	; 1
+		_delay_ms(1.1);
+		PORTC &=0xfb;
+		_delay_ms(17); //19.4
+	}
+	
+	for(int i=0;i<20;i++)
+ a26:	81 f7       	brne	.-32     	; 0xa08 <ster_drugi+0xb4>
+		_delay_ms(1.1);
+		PORTC &=0xfd;
+		_delay_ms(17); //19.4
+	}
+	
+	cala_reka__wylacz();
+ a28:	4e dc       	rcall	.-1892   	; 0x2c6 <cala_reka__wylacz>
+ a2a:	8f e3       	ldi	r24, 0x3F	; 63
+ a2c:	9d e0       	ldi	r25, 0x0D	; 13
+ a2e:	a3 e0       	ldi	r26, 0x03	; 3
+ a30:	81 50       	subi	r24, 0x01	; 1
+ a32:	90 40       	sbci	r25, 0x00	; 0
+ a34:	a0 40       	sbci	r26, 0x00	; 0
+ a36:	e1 f7       	brne	.-8      	; 0xa30 <ster_drugi+0xdc>
+ a38:	00 c0       	rjmp	.+0      	; 0xa3a <ster_drugi+0xe6>
+ a3a:	00 00       	nop
+ a3c:	84 e1       	ldi	r24, 0x14	; 20
+ a3e:	90 e0       	ldi	r25, 0x00	; 0
+	_delay_ms(1000);
+	//
+	
+	for(int i=0;i<20;i++)
+	{
+		PORTC |=0x02;
+ a40:	a9 9a       	sbi	0x15, 1	; 21
+ a42:	a2 e1       	ldi	r26, 0x12	; 18
+ a44:	b1 e0       	ldi	r27, 0x01	; 1
+ a46:	11 97       	sbiw	r26, 0x01	; 1
+ a48:	f1 f7       	brne	.-4      	; 0xa46 <ster_drugi+0xf2>
+ a4a:	00 c0       	rjmp	.+0      	; 0xa4c <ster_drugi+0xf8>
+ a4c:	00 00       	nop
+		_delay_ms(1.1);
+		PORTC &=0xfd;
+ a4e:	a9 98       	cbi	0x15, 1	; 21
+ a50:	e9 e9       	ldi	r30, 0x99	; 153
+ a52:	f0 e1       	ldi	r31, 0x10	; 16
+ a54:	31 97       	sbiw	r30, 0x01	; 1
+ a56:	f1 f7       	brne	.-4      	; 0xa54 <ster_drugi+0x100>
+ a58:	00 c0       	rjmp	.+0      	; 0xa5a <ster_drugi+0x106>
+ a5a:	00 00       	nop
+ a5c:	01 97       	sbiw	r24, 0x01	; 1
+	
+	cala_reka__wylacz();
+	_delay_ms(1000);
+	//
+	
+	for(int i=0;i<20;i++)
+ a5e:	81 f7       	brne	.-32     	; 0xa40 <ster_drugi+0xec>
+ a60:	8f e0       	ldi	r24, 0x0F	; 15
+ a62:	90 e0       	ldi	r25, 0x00	; 0
+		_delay_ms(17); //19.4
+	}
+	
+	for(int i=0;i<15;i++)
+	{
+		PORTC |=0x04;
+ a64:	aa 9a       	sbi	0x15, 2	; 21
+ a66:	a2 e1       	ldi	r26, 0x12	; 18
+ a68:	b1 e0       	ldi	r27, 0x01	; 1
+ a6a:	11 97       	sbiw	r26, 0x01	; 1
+ a6c:	f1 f7       	brne	.-4      	; 0xa6a <ster_drugi+0x116>
+ a6e:	00 c0       	rjmp	.+0      	; 0xa70 <ster_drugi+0x11c>
+ a70:	00 00       	nop
+		_delay_ms(1.1);
+		PORTC &=0xfb;
+ a72:	aa 98       	cbi	0x15, 2	; 21
+ a74:	e9 e9       	ldi	r30, 0x99	; 153
+ a76:	f0 e1       	ldi	r31, 0x10	; 16
+ a78:	31 97       	sbiw	r30, 0x01	; 1
+ a7a:	f1 f7       	brne	.-4      	; 0xa78 <ster_drugi+0x124>
+ a7c:	00 c0       	rjmp	.+0      	; 0xa7e <ster_drugi+0x12a>
+ a7e:	00 00       	nop
+ a80:	01 97       	sbiw	r24, 0x01	; 1
+		_delay_ms(1.1);
+		PORTC &=0xfd;
+		_delay_ms(17); //19.4
+	}
+	
+	for(int i=0;i<15;i++)
+ a82:	81 f7       	brne	.-32     	; 0xa64 <ster_drugi+0x110>
+ a84:	8a e0       	ldi	r24, 0x0A	; 10
+ a86:	90 e0       	ldi	r25, 0x00	; 0
+		_delay_ms(17); //19.4
+	}
+	
+	for(int i=0;i<10;i++)
+	{
+		PORTC |=0x08;
+ a88:	ab 9a       	sbi	0x15, 3	; 21
+ a8a:	a2 e1       	ldi	r26, 0x12	; 18
+ a8c:	b1 e0       	ldi	r27, 0x01	; 1
+ a8e:	11 97       	sbiw	r26, 0x01	; 1
+ a90:	f1 f7       	brne	.-4      	; 0xa8e <ster_drugi+0x13a>
+ a92:	00 c0       	rjmp	.+0      	; 0xa94 <ster_drugi+0x140>
+ a94:	00 00       	nop
+		_delay_ms(1.1);
+		PORTC &=0xf7;
+ a96:	ab 98       	cbi	0x15, 3	; 21
+ a98:	e9 e9       	ldi	r30, 0x99	; 153
+ a9a:	f0 e1       	ldi	r31, 0x10	; 16
+ a9c:	31 97       	sbiw	r30, 0x01	; 1
+ a9e:	f1 f7       	brne	.-4      	; 0xa9c <ster_drugi+0x148>
+ aa0:	00 c0       	rjmp	.+0      	; 0xaa2 <ster_drugi+0x14e>
+ aa2:	00 00       	nop
+ aa4:	01 97       	sbiw	r24, 0x01	; 1
+		_delay_ms(1.1);
+		PORTC &=0xfb;
+		_delay_ms(17); //19.4
+	}
+	
+	for(int i=0;i<10;i++)
+ aa6:	81 f7       	brne	.-32     	; 0xa88 <ster_drugi+0x134>
+ aa8:	85 e0       	ldi	r24, 0x05	; 5
+ aaa:	90 e0       	ldi	r25, 0x00	; 0
+	}
+	
+	
+	for(int i=0;i<5;i++)
+	{
+		PORTC |=0x10;
+ aac:	ac 9a       	sbi	0x15, 4	; 21
+ aae:	a2 e1       	ldi	r26, 0x12	; 18
+ ab0:	b1 e0       	ldi	r27, 0x01	; 1
+ ab2:	11 97       	sbiw	r26, 0x01	; 1
+ ab4:	f1 f7       	brne	.-4      	; 0xab2 <ster_drugi+0x15e>
+ ab6:	00 c0       	rjmp	.+0      	; 0xab8 <ster_drugi+0x164>
+ ab8:	00 00       	nop
+		_delay_ms(1.1);
+		PORTC &=0xef;
+ aba:	ac 98       	cbi	0x15, 4	; 21
+ abc:	e9 e9       	ldi	r30, 0x99	; 153
+ abe:	f0 e1       	ldi	r31, 0x10	; 16
+ ac0:	31 97       	sbiw	r30, 0x01	; 1
+ ac2:	f1 f7       	brne	.-4      	; 0xac0 <ster_drugi+0x16c>
+ ac4:	00 c0       	rjmp	.+0      	; 0xac6 <ster_drugi+0x172>
+ ac6:	00 00       	nop
+ ac8:	01 97       	sbiw	r24, 0x01	; 1
+		PORTC &=0xf7;
+		_delay_ms(17); //19.4
+	}
+	
+	
+	for(int i=0;i<5;i++)
+ aca:	81 f7       	brne	.-32     	; 0xaac <ster_drugi+0x158>
+		_delay_ms(1.1);
+		PORTC &=0xef;
+		_delay_ms(17); //19.4
+	}
+	
+	cala_reka__wylacz();
+ acc:	fc db       	rcall	.-2056   	; 0x2c6 <cala_reka__wylacz>
+ ace:	8f e7       	ldi	r24, 0x7F	; 127
+ ad0:	9a e1       	ldi	r25, 0x1A	; 26
+ ad2:	a6 e0       	ldi	r26, 0x06	; 6
+ ad4:	81 50       	subi	r24, 0x01	; 1
+ ad6:	90 40       	sbci	r25, 0x00	; 0
+ ad8:	a0 40       	sbci	r26, 0x00	; 0
+ ada:	e1 f7       	brne	.-8      	; 0xad4 <ster_drugi+0x180>
+ adc:	00 c0       	rjmp	.+0      	; 0xade <ster_drugi+0x18a>
+ ade:	00 00       	nop
+	
+	_delay_ms(2000);
+	
+	
+	dol_lewo_pelnokr(tster_pelnokr_prawo_lewo,300,0);
+ ae0:	08 e7       	ldi	r16, 0x78	; 120
+ ae2:	10 e0       	ldi	r17, 0x00	; 0
+ ae4:	c8 01       	movw	r24, r16
+ ae6:	6c e2       	ldi	r22, 0x2C	; 44
+ ae8:	71 e0       	ldi	r23, 0x01	; 1
+ aea:	40 e0       	ldi	r20, 0x00	; 0
+ aec:	94 db       	rcall	.-2264   	; 0x216 <dol_lewo_pelnokr>
+ aee:	8f e3       	ldi	r24, 0x3F	; 63
+ af0:	9d e0       	ldi	r25, 0x0D	; 13
+ af2:	a3 e0       	ldi	r26, 0x03	; 3
+ af4:	81 50       	subi	r24, 0x01	; 1
+ af6:	90 40       	sbci	r25, 0x00	; 0
+ af8:	a0 40       	sbci	r26, 0x00	; 0
+ afa:	e1 f7       	brne	.-8      	; 0xaf4 <ster_drugi+0x1a0>
+ afc:	00 c0       	rjmp	.+0      	; 0xafe <ster_drugi+0x1aa>
+ afe:	00 00       	nop
+	_delay_ms(1000);
+	gora_prawo_pelnokr(tster_pelnokr_prawo_lewo,300,0);
+ b00:	c8 01       	movw	r24, r16
+ b02:	6c e2       	ldi	r22, 0x2C	; 44
+ b04:	71 e0       	ldi	r23, 0x01	; 1
+ b06:	40 e0       	ldi	r20, 0x00	; 0
+ b08:	50 db       	rcall	.-2400   	; 0x1aa <gora_prawo_pelnokr>
+	polowa_reki_1_wlacz();
+ b0a:	e5 dc       	rcall	.-1590   	; 0x4d6 <polowa_reki_1_wlacz>
+	gora_prawo_pelnokr(tster_pelnokr_gora_dol_oba,75,0);
+ b0c:	c8 e6       	ldi	r28, 0x68	; 104
+ b0e:	d0 e0       	ldi	r29, 0x00	; 0
+ b10:	ce 01       	movw	r24, r28
+ b12:	6b e4       	ldi	r22, 0x4B	; 75
+ b14:	70 e0       	ldi	r23, 0x00	; 0
+ b16:	40 e0       	ldi	r20, 0x00	; 0
+ b18:	48 db       	rcall	.-2416   	; 0x1aa <gora_prawo_pelnokr>
+ b1a:	8f e3       	ldi	r24, 0x3F	; 63
+ b1c:	9d e0       	ldi	r25, 0x0D	; 13
+ b1e:	a3 e0       	ldi	r26, 0x03	; 3
+ b20:	81 50       	subi	r24, 0x01	; 1
+ b22:	90 40       	sbci	r25, 0x00	; 0
+ b24:	a0 40       	sbci	r26, 0x00	; 0
+ b26:	e1 f7       	brne	.-8      	; 0xb20 <ster_drugi+0x1cc>
+ b28:	00 c0       	rjmp	.+0      	; 0xb2a <ster_drugi+0x1d6>
+ b2a:	00 00       	nop
+	_delay_ms(1000);
+	cala_reka__wylacz();
+ b2c:	cc db       	rcall	.-2152   	; 0x2c6 <cala_reka__wylacz>
+	gora_prawo_pelnokr(tster_pelnokr_gora_dol_oba,75,0);
+ b2e:	ce 01       	movw	r24, r28
+ b30:	6b e4       	ldi	r22, 0x4B	; 75
+ b32:	70 e0       	ldi	r23, 0x00	; 0
+ b34:	40 e0       	ldi	r20, 0x00	; 0
+ b36:	39 db       	rcall	.-2446   	; 0x1aa <gora_prawo_pelnokr>
+ b38:	8f e7       	ldi	r24, 0x7F	; 127
+ b3a:	9a e1       	ldi	r25, 0x1A	; 26
+ b3c:	a6 e0       	ldi	r26, 0x06	; 6
+ b3e:	81 50       	subi	r24, 0x01	; 1
+ b40:	90 40       	sbci	r25, 0x00	; 0
+ b42:	a0 40       	sbci	r26, 0x00	; 0
+ b44:	e1 f7       	brne	.-8      	; 0xb3e <ster_drugi+0x1ea>
+ b46:	00 c0       	rjmp	.+0      	; 0xb48 <ster_drugi+0x1f4>
+ b48:	00 00       	nop
+	_delay_ms(2000);
+	reka_o();
+ b4a:	d3 dd       	rcall	.-1114   	; 0x6f2 <reka_o>
+ b4c:	8f e7       	ldi	r24, 0x7F	; 127
+ b4e:	9a e1       	ldi	r25, 0x1A	; 26
+ b50:	a6 e0       	ldi	r26, 0x06	; 6
+ b52:	81 50       	subi	r24, 0x01	; 1
+ b54:	90 40       	sbci	r25, 0x00	; 0
+ b56:	a0 40       	sbci	r26, 0x00	; 0
+ b58:	e1 f7       	brne	.-8      	; 0xb52 <ster_drugi+0x1fe>
+ b5a:	00 c0       	rjmp	.+0      	; 0xb5c <ster_drugi+0x208>
+ b5c:	00 00       	nop
+	_delay_ms(2000);
+	dol_lewo_pelnokr(tster_pelnokr_gora_dol_oba,150,0);
+ b5e:	ce 01       	movw	r24, r28
+ b60:	66 e9       	ldi	r22, 0x96	; 150
+ b62:	70 e0       	ldi	r23, 0x00	; 0
+ b64:	40 e0       	ldi	r20, 0x00	; 0
+ b66:	57 db       	rcall	.-2386   	; 0x216 <dol_lewo_pelnokr>
+ b68:	8f e7       	ldi	r24, 0x7F	; 127
+ b6a:	9a e1       	ldi	r25, 0x1A	; 26
+ b6c:	a6 e0       	ldi	r26, 0x06	; 6
+ b6e:	81 50       	subi	r24, 0x01	; 1
+ b70:	90 40       	sbci	r25, 0x00	; 0
+ b72:	a0 40       	sbci	r26, 0x00	; 0
+ b74:	e1 f7       	brne	.-8      	; 0xb6e <ster_drugi+0x21a>
+ b76:	00 c0       	rjmp	.+0      	; 0xb78 <ster_drugi+0x224>
+ b78:	00 00       	nop
+	_delay_ms(2000);
+	cala_reka__wylacz();
+ b7a:	a5 db       	rcall	.-2230   	; 0x2c6 <cala_reka__wylacz>
+ b7c:	8f e7       	ldi	r24, 0x7F	; 127
+ b7e:	9a e1       	ldi	r25, 0x1A	; 26
+ b80:	a6 e0       	ldi	r26, 0x06	; 6
+ b82:	81 50       	subi	r24, 0x01	; 1
+ b84:	90 40       	sbci	r25, 0x00	; 0
+ b86:	a0 40       	sbci	r26, 0x00	; 0
+ b88:	e1 f7       	brne	.-8      	; 0xb82 <ster_drugi+0x22e>
+ b8a:	00 c0       	rjmp	.+0      	; 0xb8c <ster_drugi+0x238>
+ b8c:	00 00       	nop
+	_delay_ms(2000);
+	dol_lewo_pelnokr(tster_pelnokr_prawo_lewo,500,0);
+ b8e:	c8 01       	movw	r24, r16
+ b90:	64 ef       	ldi	r22, 0xF4	; 244
+ b92:	71 e0       	ldi	r23, 0x01	; 1
+ b94:	40 e0       	ldi	r20, 0x00	; 0
+ b96:	3f db       	rcall	.-2434   	; 0x216 <dol_lewo_pelnokr>
+ b98:	8f e7       	ldi	r24, 0x7F	; 127
+ b9a:	9a e1       	ldi	r25, 0x1A	; 26
+ b9c:	a6 e0       	ldi	r26, 0x06	; 6
+ b9e:	81 50       	subi	r24, 0x01	; 1
+ ba0:	90 40       	sbci	r25, 0x00	; 0
+ ba2:	a0 40       	sbci	r26, 0x00	; 0
+ ba4:	e1 f7       	brne	.-8      	; 0xb9e <ster_drugi+0x24a>
+ ba6:	00 c0       	rjmp	.+0      	; 0xba8 <ster_drugi+0x254>
+ ba8:	00 00       	nop
+	_delay_ms(2000);
+	gora_prawo_pelnokr(tster_pelnokr_gora_dol_oba,150,0);
+ baa:	ce 01       	movw	r24, r28
+ bac:	66 e9       	ldi	r22, 0x96	; 150
+ bae:	70 e0       	ldi	r23, 0x00	; 0
+ bb0:	40 e0       	ldi	r20, 0x00	; 0
+ bb2:	fb da       	rcall	.-2570   	; 0x1aa <gora_prawo_pelnokr>
+ bb4:	8f e7       	ldi	r24, 0x7F	; 127
+ bb6:	9a e1       	ldi	r25, 0x1A	; 26
+ bb8:	a6 e0       	ldi	r26, 0x06	; 6
+ bba:	81 50       	subi	r24, 0x01	; 1
+ bbc:	90 40       	sbci	r25, 0x00	; 0
+ bbe:	a0 40       	sbci	r26, 0x00	; 0
+ bc0:	e1 f7       	brne	.-8      	; 0xbba <ster_drugi+0x266>
+ bc2:	00 c0       	rjmp	.+0      	; 0xbc4 <ster_drugi+0x270>
+ bc4:	00 00       	nop
+ bc6:	85 e0       	ldi	r24, 0x05	; 5
+ bc8:	90 e0       	ldi	r25, 0x00	; 0
+	_delay_ms(2000);
+	
+	for(int i=0;i<5;i++)
+	{
+		PORTC |=0x10;
+ bca:	ac 9a       	sbi	0x15, 4	; 21
+ bcc:	a2 e1       	ldi	r26, 0x12	; 18
+ bce:	b1 e0       	ldi	r27, 0x01	; 1
+ bd0:	11 97       	sbiw	r26, 0x01	; 1
+ bd2:	f1 f7       	brne	.-4      	; 0xbd0 <ster_drugi+0x27c>
+ bd4:	00 c0       	rjmp	.+0      	; 0xbd6 <ster_drugi+0x282>
+ bd6:	00 00       	nop
+		_delay_ms(1.1);
+		PORTC &=0xef;
+ bd8:	ac 98       	cbi	0x15, 4	; 21
+ bda:	e9 e9       	ldi	r30, 0x99	; 153
+ bdc:	f0 e1       	ldi	r31, 0x10	; 16
+ bde:	31 97       	sbiw	r30, 0x01	; 1
+ be0:	f1 f7       	brne	.-4      	; 0xbde <ster_drugi+0x28a>
+ be2:	00 c0       	rjmp	.+0      	; 0xbe4 <ster_drugi+0x290>
+ be4:	00 00       	nop
+ be6:	01 97       	sbiw	r24, 0x01	; 1
+	dol_lewo_pelnokr(tster_pelnokr_prawo_lewo,500,0);
+	_delay_ms(2000);
+	gora_prawo_pelnokr(tster_pelnokr_gora_dol_oba,150,0);
+	_delay_ms(2000);
+	
+	for(int i=0;i<5;i++)
+ be8:	81 f7       	brne	.-32     	; 0xbca <ster_drugi+0x276>
+ bea:	8a e0       	ldi	r24, 0x0A	; 10
+ bec:	90 e0       	ldi	r25, 0x00	; 0
+		_delay_ms(17); //19.4
+	}
+	
+	for(int i=0;i<10;i++)
+	{
+		PORTC |=0x08;
+ bee:	ab 9a       	sbi	0x15, 3	; 21
+ bf0:	a2 e1       	ldi	r26, 0x12	; 18
+ bf2:	b1 e0       	ldi	r27, 0x01	; 1
+ bf4:	11 97       	sbiw	r26, 0x01	; 1
+ bf6:	f1 f7       	brne	.-4      	; 0xbf4 <ster_drugi+0x2a0>
+ bf8:	00 c0       	rjmp	.+0      	; 0xbfa <ster_drugi+0x2a6>
+ bfa:	00 00       	nop
+		_delay_ms(1.1);
+		PORTC &=0xf7;
+ bfc:	ab 98       	cbi	0x15, 3	; 21
+ bfe:	e9 e9       	ldi	r30, 0x99	; 153
+ c00:	f0 e1       	ldi	r31, 0x10	; 16
+ c02:	31 97       	sbiw	r30, 0x01	; 1
+ c04:	f1 f7       	brne	.-4      	; 0xc02 <ster_drugi+0x2ae>
+ c06:	00 c0       	rjmp	.+0      	; 0xc08 <ster_drugi+0x2b4>
+ c08:	00 00       	nop
+ c0a:	01 97       	sbiw	r24, 0x01	; 1
+		_delay_ms(1.1);
+		PORTC &=0xef;
+		_delay_ms(17); //19.4
+	}
+	
+	for(int i=0;i<10;i++)
+ c0c:	81 f7       	brne	.-32     	; 0xbee <ster_drugi+0x29a>
+ c0e:	8f e0       	ldi	r24, 0x0F	; 15
+ c10:	90 e0       	ldi	r25, 0x00	; 0
+		_delay_ms(17); //19.4
+	}
+	
+	for(int i=0;i<15;i++)
+	{
+		PORTC |=0x04;
+ c12:	aa 9a       	sbi	0x15, 2	; 21
+ c14:	a2 e1       	ldi	r26, 0x12	; 18
+ c16:	b1 e0       	ldi	r27, 0x01	; 1
+ c18:	11 97       	sbiw	r26, 0x01	; 1
+ c1a:	f1 f7       	brne	.-4      	; 0xc18 <ster_drugi+0x2c4>
+ c1c:	00 c0       	rjmp	.+0      	; 0xc1e <ster_drugi+0x2ca>
+ c1e:	00 00       	nop
+		_delay_ms(1.1);
+		PORTC &=0xfb;
+ c20:	aa 98       	cbi	0x15, 2	; 21
+ c22:	e9 e9       	ldi	r30, 0x99	; 153
+ c24:	f0 e1       	ldi	r31, 0x10	; 16
+ c26:	31 97       	sbiw	r30, 0x01	; 1
+ c28:	f1 f7       	brne	.-4      	; 0xc26 <ster_drugi+0x2d2>
+ c2a:	00 c0       	rjmp	.+0      	; 0xc2c <ster_drugi+0x2d8>
+ c2c:	00 00       	nop
+ c2e:	01 97       	sbiw	r24, 0x01	; 1
+		_delay_ms(1.1);
+		PORTC &=0xf7;
+		_delay_ms(17); //19.4
+	}
+	
+	for(int i=0;i<15;i++)
+ c30:	81 f7       	brne	.-32     	; 0xc12 <ster_drugi+0x2be>
+ c32:	84 e1       	ldi	r24, 0x14	; 20
+ c34:	90 e0       	ldi	r25, 0x00	; 0
+		_delay_ms(17); //19.4
+	}
+	
+	for(int i=0;i<20;i++)
+	{
+		PORTC |=0x02;
+ c36:	a9 9a       	sbi	0x15, 1	; 21
+ c38:	a2 e1       	ldi	r26, 0x12	; 18
+ c3a:	b1 e0       	ldi	r27, 0x01	; 1
+ c3c:	11 97       	sbiw	r26, 0x01	; 1
+ c3e:	f1 f7       	brne	.-4      	; 0xc3c <ster_drugi+0x2e8>
+ c40:	00 c0       	rjmp	.+0      	; 0xc42 <ster_drugi+0x2ee>
+ c42:	00 00       	nop
+		_delay_ms(1.1);
+		PORTC &=0xfd;
+ c44:	a9 98       	cbi	0x15, 1	; 21
+ c46:	e9 e9       	ldi	r30, 0x99	; 153
+ c48:	f0 e1       	ldi	r31, 0x10	; 16
+ c4a:	31 97       	sbiw	r30, 0x01	; 1
+ c4c:	f1 f7       	brne	.-4      	; 0xc4a <ster_drugi+0x2f6>
+ c4e:	00 c0       	rjmp	.+0      	; 0xc50 <ster_drugi+0x2fc>
+ c50:	00 00       	nop
+ c52:	01 97       	sbiw	r24, 0x01	; 1
+		_delay_ms(1.1);
+		PORTC &=0xfb;
+		_delay_ms(17); //19.4
+	}
+	
+	for(int i=0;i<20;i++)
+ c54:	81 f7       	brne	.-32     	; 0xc36 <ster_drugi+0x2e2>
+		_delay_ms(1.1);
+		PORTC &=0xfd;
+		_delay_ms(17); //19.4
+	}
+	
+	cala_reka__wylacz();
+ c56:	37 db       	rcall	.-2450   	; 0x2c6 <cala_reka__wylacz>
+ c58:	8f e3       	ldi	r24, 0x3F	; 63
+ c5a:	9d e0       	ldi	r25, 0x0D	; 13
+ c5c:	a3 e0       	ldi	r26, 0x03	; 3
+ c5e:	81 50       	subi	r24, 0x01	; 1
+ c60:	90 40       	sbci	r25, 0x00	; 0
+ c62:	a0 40       	sbci	r26, 0x00	; 0
+ c64:	e1 f7       	brne	.-8      	; 0xc5e <ster_drugi+0x30a>
+ c66:	00 c0       	rjmp	.+0      	; 0xc68 <ster_drugi+0x314>
+ c68:	00 00       	nop
+ c6a:	85 e0       	ldi	r24, 0x05	; 5
+ c6c:	90 e0       	ldi	r25, 0x00	; 0
+	_delay_ms(1000);
+	for(int i=0;i<5;i++)
+	{
+		PORTC |=0x10;
+ c6e:	ac 9a       	sbi	0x15, 4	; 21
+ c70:	a2 e1       	ldi	r26, 0x12	; 18
+ c72:	b1 e0       	ldi	r27, 0x01	; 1
+ c74:	11 97       	sbiw	r26, 0x01	; 1
+ c76:	f1 f7       	brne	.-4      	; 0xc74 <ster_drugi+0x320>
+ c78:	00 c0       	rjmp	.+0      	; 0xc7a <ster_drugi+0x326>
+ c7a:	00 00       	nop
+		_delay_ms(1.1);
+		PORTC &=0xef;
+ c7c:	ac 98       	cbi	0x15, 4	; 21
+ c7e:	e9 e9       	ldi	r30, 0x99	; 153
+ c80:	f0 e1       	ldi	r31, 0x10	; 16
+ c82:	31 97       	sbiw	r30, 0x01	; 1
+ c84:	f1 f7       	brne	.-4      	; 0xc82 <ster_drugi+0x32e>
+ c86:	00 c0       	rjmp	.+0      	; 0xc88 <ster_drugi+0x334>
+ c88:	00 00       	nop
+ c8a:	01 97       	sbiw	r24, 0x01	; 1
+		_delay_ms(17); //19.4
+	}
+	
+	cala_reka__wylacz();
+	_delay_ms(1000);
+	for(int i=0;i<5;i++)
+ c8c:	81 f7       	brne	.-32     	; 0xc6e <ster_drugi+0x31a>
+ c8e:	8a e0       	ldi	r24, 0x0A	; 10
+ c90:	90 e0       	ldi	r25, 0x00	; 0
+		_delay_ms(17); //19.4
+	}
+	
+	for(int i=0;i<10;i++)
+	{
+		PORTC |=0x08;
+ c92:	ab 9a       	sbi	0x15, 3	; 21
+ c94:	a2 e1       	ldi	r26, 0x12	; 18
+ c96:	b1 e0       	ldi	r27, 0x01	; 1
+ c98:	11 97       	sbiw	r26, 0x01	; 1
+ c9a:	f1 f7       	brne	.-4      	; 0xc98 <ster_drugi+0x344>
+ c9c:	00 c0       	rjmp	.+0      	; 0xc9e <ster_drugi+0x34a>
+ c9e:	00 00       	nop
+		_delay_ms(1.1);
+		PORTC &=0xf7;
+ ca0:	ab 98       	cbi	0x15, 3	; 21
+ ca2:	e9 e9       	ldi	r30, 0x99	; 153
+ ca4:	f0 e1       	ldi	r31, 0x10	; 16
+ ca6:	31 97       	sbiw	r30, 0x01	; 1
+ ca8:	f1 f7       	brne	.-4      	; 0xca6 <ster_drugi+0x352>
+ caa:	00 c0       	rjmp	.+0      	; 0xcac <ster_drugi+0x358>
+ cac:	00 00       	nop
+ cae:	01 97       	sbiw	r24, 0x01	; 1
+		_delay_ms(1.1);
+		PORTC &=0xef;
+		_delay_ms(17); //19.4
+	}
+	
+	for(int i=0;i<10;i++)
+ cb0:	81 f7       	brne	.-32     	; 0xc92 <ster_drugi+0x33e>
+ cb2:	8f e0       	ldi	r24, 0x0F	; 15
+ cb4:	90 e0       	ldi	r25, 0x00	; 0
+		_delay_ms(17); //19.4
+	}
+	
+	for(int i=0;i<15;i++)
+	{
+		PORTC |=0x04;
+ cb6:	aa 9a       	sbi	0x15, 2	; 21
+ cb8:	a2 e1       	ldi	r26, 0x12	; 18
+ cba:	b1 e0       	ldi	r27, 0x01	; 1
+ cbc:	11 97       	sbiw	r26, 0x01	; 1
+ cbe:	f1 f7       	brne	.-4      	; 0xcbc <ster_drugi+0x368>
+ cc0:	00 c0       	rjmp	.+0      	; 0xcc2 <ster_drugi+0x36e>
+ cc2:	00 00       	nop
+		_delay_ms(1.1);
+		PORTC &=0xfb;
+ cc4:	aa 98       	cbi	0x15, 2	; 21
+ cc6:	e9 e9       	ldi	r30, 0x99	; 153
+ cc8:	f0 e1       	ldi	r31, 0x10	; 16
+ cca:	31 97       	sbiw	r30, 0x01	; 1
+ ccc:	f1 f7       	brne	.-4      	; 0xcca <ster_drugi+0x376>
+ cce:	00 c0       	rjmp	.+0      	; 0xcd0 <ster_drugi+0x37c>
+ cd0:	00 00       	nop
+ cd2:	01 97       	sbiw	r24, 0x01	; 1
+		_delay_ms(1.1);
+		PORTC &=0xf7;
+		_delay_ms(17); //19.4
+	}
+	
+	for(int i=0;i<15;i++)
+ cd4:	81 f7       	brne	.-32     	; 0xcb6 <ster_drugi+0x362>
+ cd6:	84 e1       	ldi	r24, 0x14	; 20
+ cd8:	90 e0       	ldi	r25, 0x00	; 0
+		_delay_ms(17); //19.4
+	}
+	
+	for(int i=0;i<20;i++)
+	{
+		PORTC |=0x02;
+ cda:	a9 9a       	sbi	0x15, 1	; 21
+ cdc:	a2 e1       	ldi	r26, 0x12	; 18
+ cde:	b1 e0       	ldi	r27, 0x01	; 1
+ ce0:	11 97       	sbiw	r26, 0x01	; 1
+ ce2:	f1 f7       	brne	.-4      	; 0xce0 <ster_drugi+0x38c>
+ ce4:	00 c0       	rjmp	.+0      	; 0xce6 <ster_drugi+0x392>
+ ce6:	00 00       	nop
+		_delay_ms(1.1);
+		PORTC &=0xfd;
+ ce8:	a9 98       	cbi	0x15, 1	; 21
+ cea:	e9 e9       	ldi	r30, 0x99	; 153
+ cec:	f0 e1       	ldi	r31, 0x10	; 16
+ cee:	31 97       	sbiw	r30, 0x01	; 1
+ cf0:	f1 f7       	brne	.-4      	; 0xcee <ster_drugi+0x39a>
+ cf2:	00 c0       	rjmp	.+0      	; 0xcf4 <ster_drugi+0x3a0>
+ cf4:	00 00       	nop
+ cf6:	01 97       	sbiw	r24, 0x01	; 1
+		_delay_ms(1.1);
+		PORTC &=0xfb;
+		_delay_ms(17); //19.4
+	}
+	
+	for(int i=0;i<20;i++)
+ cf8:	81 f7       	brne	.-32     	; 0xcda <ster_drugi+0x386>
+		PORTC |=0x02;
+		_delay_ms(1.1);
+		PORTC &=0xfd;
+		_delay_ms(17); //19.4
+	}
+	cala_reka__wylacz();
+ cfa:	e5 da       	rcall	.-2614   	; 0x2c6 <cala_reka__wylacz>
+ cfc:	8f e7       	ldi	r24, 0x7F	; 127
+ cfe:	9a e1       	ldi	r25, 0x1A	; 26
+ d00:	a6 e0       	ldi	r26, 0x06	; 6
+ d02:	81 50       	subi	r24, 0x01	; 1
+ d04:	90 40       	sbci	r25, 0x00	; 0
+ d06:	a0 40       	sbci	r26, 0x00	; 0
+ d08:	e1 f7       	brne	.-8      	; 0xd02 <ster_drugi+0x3ae>
+ d0a:	00 c0       	rjmp	.+0      	; 0xd0c <ster_drugi+0x3b8>
+ d0c:	00 00       	nop
+	_delay_ms(2000);
+	
+	
+
+	
+ d0e:	df 91       	pop	r29
+ d10:	cf 91       	pop	r28
+ d12:	1f 91       	pop	r17
+ d14:	0f 91       	pop	r16
+ d16:	08 95       	ret
+
+00000d18 <main>:
+
+
+
+int main(void)
+{
+	DDRB=0xff;
+ d18:	8f ef       	ldi	r24, 0xFF	; 255
+ d1a:	87 bb       	out	0x17, r24	; 23
+    DDRC = 0xff; //Ustawienie lini PC0-PC7 jako wyjœcia (pierwszy silnik)
+ d1c:	84 bb       	out	0x14, r24	; 20
+	
+	
+		
+		//Globalna obs³uga przerwañ
+		
+		DDRD=0x00;
+ d1e:	11 ba       	out	0x11, r1	; 17
+		PORTD=0xff;
+ d20:	82 bb       	out	0x12, r24	; 18
+		GIMSK |= _BV(INT0)| _BV(INT1);
+ d22:	8b b7       	in	r24, 0x3b	; 59
+ d24:	80 6c       	ori	r24, 0xC0	; 192
+ d26:	8b bf       	out	0x3b, r24	; 59
+		MCUCR |=  (0<<ISC01)| (0<<ISC00) | (0<<ISC11)| (0<<ISC10);
+ d28:	85 b7       	in	r24, 0x35	; 53
+ d2a:	85 bf       	out	0x35, r24	; 53
+		sei();
+ d2c:	78 94       	sei
+	
+	
+	
+		cala_reka__wylacz(); //Resetowanie palców
+ d2e:	cb da       	rcall	.-2666   	; 0x2c6 <cala_reka__wylacz>
+		kalibracja(); //Kalibracja reki
+ d30:	c3 dc       	rcall	.-1658   	; 0x6b8 <kalibracja>
+		
+
+		for(;;)
+		{
+			
+			for(int z=0;z<=20;z++)
+ d32:	c0 e0       	ldi	r28, 0x00	; 0
+ d34:	d0 e0       	ldi	r29, 0x00	; 0
+ d36:	00 e0       	ldi	r16, 0x00	; 0
+ d38:	10 e0       	ldi	r17, 0x00	; 0
+ d3a:	22 c0       	rjmp	.+68     	; 0xd80 <main+0x68>
+			{
+			ster_pierwszy();
+ d3c:	2d dd       	rcall	.-1446   	; 0x798 <ster_pierwszy>
+ d3e:	8f e3       	ldi	r24, 0x3F	; 63
+ d40:	92 e4       	ldi	r25, 0x42	; 66
+ d42:	af e0       	ldi	r26, 0x0F	; 15
+ d44:	81 50       	subi	r24, 0x01	; 1
+ d46:	90 40       	sbci	r25, 0x00	; 0
+ d48:	a0 40       	sbci	r26, 0x00	; 0
+ d4a:	e1 f7       	brne	.-8      	; 0xd44 <main+0x2c>
+ d4c:	00 c0       	rjmp	.+0      	; 0xd4e <main+0x36>
+ d4e:	00 00       	nop
+			_delay_ms(5000);
+			ster_drugi();
+ d50:	01 de       	rcall	.-1022   	; 0x954 <ster_drugi>
+ d52:	8f e3       	ldi	r24, 0x3F	; 63
+ d54:	92 e4       	ldi	r25, 0x42	; 66
+ d56:	af e0       	ldi	r26, 0x0F	; 15
+ d58:	81 50       	subi	r24, 0x01	; 1
+ d5a:	90 40       	sbci	r25, 0x00	; 0
+ d5c:	a0 40       	sbci	r26, 0x00	; 0
+ d5e:	e1 f7       	brne	.-8      	; 0xd58 <main+0x40>
+ d60:	00 c0       	rjmp	.+0      	; 0xd62 <main+0x4a>
+ d62:	00 00       	nop
+			_delay_ms(5000);			
+			
+				if(z==20)
+ d64:	c4 31       	cpi	r28, 0x14	; 20
+ d66:	d1 05       	cpc	r29, r1
+ d68:	51 f4       	brne	.+20     	; 0xd7e <main+0x66>
+ d6a:	8f e7       	ldi	r24, 0x7F	; 127
+ d6c:	94 e8       	ldi	r25, 0x84	; 132
+ d6e:	ae e1       	ldi	r26, 0x1E	; 30
+ d70:	81 50       	subi	r24, 0x01	; 1
+ d72:	90 40       	sbci	r25, 0x00	; 0
+ d74:	a0 40       	sbci	r26, 0x00	; 0
+ d76:	e1 f7       	brne	.-8      	; 0xd70 <main+0x58>
+ d78:	00 c0       	rjmp	.+0      	; 0xd7a <main+0x62>
+ d7a:	00 00       	nop
+				{
+					_delay_ms(10000);
+					kalibracja();
+ d7c:	9d dc       	rcall	.-1734   	; 0x6b8 <kalibracja>
+		
+
+		for(;;)
+		{
+			
+			for(int z=0;z<=20;z++)
+ d7e:	21 96       	adiw	r28, 0x01	; 1
+ d80:	c5 31       	cpi	r28, 0x15	; 21
+ d82:	d1 05       	cpc	r29, r1
+ d84:	dc f2       	brlt	.-74     	; 0xd3c <main+0x24>
+			{
+			ster_pierwszy();
+ d86:	08 dd       	rcall	.-1520   	; 0x798 <ster_pierwszy>
+ d88:	8f e3       	ldi	r24, 0x3F	; 63
+ d8a:	92 e4       	ldi	r25, 0x42	; 66
+ d8c:	af e0       	ldi	r26, 0x0F	; 15
+ d8e:	81 50       	subi	r24, 0x01	; 1
+ d90:	90 40       	sbci	r25, 0x00	; 0
+ d92:	a0 40       	sbci	r26, 0x00	; 0
+ d94:	e1 f7       	brne	.-8      	; 0xd8e <main+0x76>
+ d96:	00 c0       	rjmp	.+0      	; 0xd98 <main+0x80>
+ d98:	00 00       	nop
+			_delay_ms(5000);
+			ster_drugi();
+ d9a:	dc dd       	rcall	.-1096   	; 0x954 <ster_drugi>
+ d9c:	8f e3       	ldi	r24, 0x3F	; 63
+ d9e:	92 e4       	ldi	r25, 0x42	; 66
+ da0:	af e0       	ldi	r26, 0x0F	; 15
+ da2:	81 50       	subi	r24, 0x01	; 1
+ da4:	90 40       	sbci	r25, 0x00	; 0
+ da6:	a0 40       	sbci	r26, 0x00	; 0
+ da8:	e1 f7       	brne	.-8      	; 0xda2 <main+0x8a>
+ daa:	00 c0       	rjmp	.+0      	; 0xdac <main+0x94>
+ dac:	00 00       	nop
+		
+
+		for(;;)
+		{
+			
+			for(int z=0;z<=20;z++)
+ dae:	e8 01       	movw	r28, r16
+ db0:	e6 cf       	rjmp	.-52     	; 0xd7e <main+0x66>
+
+00000db2 <_exit>:
+ db2:	f8 94       	cli
+
+00000db4 <__stop_program>:
+ db4:	ff cf       	rjmp	.-2      	; 0xdb4 <__stop_program>
